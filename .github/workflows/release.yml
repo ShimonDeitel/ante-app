@@ -6,7 +6,8 @@ on:
     paths: ['iOS/**']
 jobs:
   build:
-    runs-on: macos-15
+    # macos-26 pool: macos-15 allocation has been starved account-wide since ~06:00 UTC 2026-07-16
+    runs-on: macos-26
     timeout-minutes: 60
     env:
       APP_NAME: Ante
