@@ -14,7 +14,7 @@ jobs:
       BUNDLE_ID: com.shimondeitel.ante
       TEAM_ID: W7Q885Q59C
       SIGN_IDENTITY_SHA1: 28783A84B07D8DFC5FCF311F7B4D7FB46594C728
-      APP_ID: "REPLACE_AFTER_APP_RECORD_CREATED"
+      APP_ID: "pending-app-record"
     defaults:
       run:
         working-directory: iOS
