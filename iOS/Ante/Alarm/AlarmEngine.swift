@@ -117,23 +117,59 @@ final class AlarmEngine {
 
         _ = try await AlarmManager.shared.schedule(id: id, configuration: configuration)
         SharedStore.currentAlarmID = id
+        switch schedule {
+        case .fixed(let date):
+            SharedStore.nextFireDate = date
+        case .relative(let relative):
+            SharedStore.nextFireDate = NextFire.next(
+                hour: relative.time.hour,
+                minute: relative.time.minute,
+                weekdayRawValues: settings.repeatWeekdayRawValues,
+                after: Date()
+            )
+        @unknown default:
+            SharedStore.nextFireDate = nil
+        }
         isScheduled = true
     }
+
+    /// Silence a ringing alarm without touching settlement state - used
+    /// after the fine has been charged, where the debt is already settled.
+    func stopRinging(id: UUID) {
+        try? AlarmManager.shared.stop(id: id)
+    }
+
+    #if DEBUG
+    /// Test-only: one-shot alarm a few seconds out, for exercising the full
+    /// ring -> button -> settlement cycle without waiting for morning.
+    func scheduleTestAlarm(after seconds: TimeInterval, settings: AppSettings) async throws {
+        try await replaceAlarm(schedule: .fixed(Date().addingTimeInterval(seconds)), settings: settings)
+    }
+    #endif
 
     func cancelDailyAlarm() {
         guard let id = SharedStore.currentAlarmID else { return }
         try? AlarmManager.shared.cancel(id: id)
         SharedStore.currentAlarmID = nil
+        SharedStore.nextFireDate = nil
         isScheduled = false
         isAlerting = false
     }
 
-    /// Called once the app has confirmed the bed photo passed verification
-    /// for the currently-alerting alarm. This is the only "free" way to
-    /// silence the alarm before its own stop button is tapped.
+    /// Called once the app has confirmed the bed photo passed verification.
+    /// Stamps lastVerifiedAt BEFORE stopping so the alarm's stop intent
+    /// (if the system runs it for a programmatic stop) knows this cycle is
+    /// settled and must not record a debt.
     func markVerifiedAndStop() {
-        guard let id = SharedStore.currentAlarmID else { return }
-        try? AlarmManager.shared.stop(id: id)
+        SharedStore.lastVerifiedAt = Date()
+        SharedStore.verificationRequested = false
         SharedStore.pendingSettlement = nil
+        // Clear the deadline immediately: the cycle is resolved. Rearm will
+        // set tomorrow's, but if rearm ever fails this must not decay into
+        // a false debt for a morning that was honestly verified.
+        SharedStore.nextFireDate = nil
+        if let id = SharedStore.currentAlarmID {
+            try? AlarmManager.shared.stop(id: id)
+        }
     }
 }

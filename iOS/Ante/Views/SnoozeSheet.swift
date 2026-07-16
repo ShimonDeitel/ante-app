@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SnoozeSheet: View {
+    var onSnoozed: () -> Void = {}
+
     @Environment(AlarmEngine.self) private var alarmEngine
     @Environment(AppSettings.self) private var settings
     @Environment(\.dismiss) private var dismiss
@@ -59,6 +61,7 @@ struct SnoozeSheet: View {
                     settings: settings
                 )
                 dismiss()
+                onSnoozed()
             } catch {
                 errorMessage = error.localizedDescription
             }

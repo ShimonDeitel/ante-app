@@ -51,6 +51,17 @@
                ReferencedContainer = "container:Ante.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C0338212C45FE33BB9F985D"
+               BuildableName = "AnteUITests.xctest"
+               BlueprintName = "AnteUITests"
+               ReferencedContainer = "container:Ante.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>

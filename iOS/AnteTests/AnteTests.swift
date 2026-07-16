@@ -1,4 +1,5 @@
 import Testing
+import Foundation
 @testable import Ante
 
 struct MoneyFormattingTests {
@@ -59,6 +60,45 @@ struct AppSettingsTests {
         let settings = AppSettings.load()
         settings.snoozeCostDollars = 0
         #expect(settings.snoozeCostCents == 0)
+    }
+}
+
+struct NextFireTests {
+    var calendar: Calendar {
+        var c = Calendar(identifier: .gregorian)
+        c.timeZone = TimeZone(identifier: "UTC")!
+        return c
+    }
+
+    func date(_ y: Int, _ mo: Int, _ d: Int, _ h: Int, _ mi: Int) -> Date {
+        calendar.date(from: DateComponents(year: y, month: mo, day: d, hour: h, minute: mi))!
+    }
+
+    @Test func firesLaterTodayWhenTimeAhead() {
+        // Wednesday 2026-07-15, 06:00. Alarm 07:00 every day.
+        let now = date(2026, 7, 15, 6, 0)
+        let next = NextFire.next(hour: 7, minute: 0, weekdayRawValues: [], after: now, calendar: calendar)
+        #expect(next == date(2026, 7, 15, 7, 0))
+    }
+
+    @Test func rollsToTomorrowWhenTimePassed() {
+        let now = date(2026, 7, 15, 8, 0)
+        let next = NextFire.next(hour: 7, minute: 0, weekdayRawValues: [], after: now, calendar: calendar)
+        #expect(next == date(2026, 7, 16, 7, 0))
+    }
+
+    @Test func skipsToNextAllowedWeekday() {
+        // 2026-07-15 is a Wednesday; only Mondays allowed -> 2026-07-20.
+        let now = date(2026, 7, 15, 8, 0)
+        let next = NextFire.next(hour: 7, minute: 0, weekdayRawValues: ["monday"], after: now, calendar: calendar)
+        #expect(next == date(2026, 7, 20, 7, 0))
+    }
+
+    @Test func sameDayAllowedWeekdayBeforeTime() {
+        // Wednesday, only Wednesdays allowed, time still ahead.
+        let now = date(2026, 7, 15, 6, 0)
+        let next = NextFire.next(hour: 7, minute: 0, weekdayRawValues: ["wednesday"], after: now, calendar: calendar)
+        #expect(next == date(2026, 7, 15, 7, 0))
     }
 }
 

@@ -6,6 +6,8 @@ private enum VerificationPhase {
 }
 
 struct VerificationFlowView: View {
+    var onResolved: () -> Void
+
     @Environment(AlarmEngine.self) private var alarmEngine
     @Environment(AppSettings.self) private var settings
     @Environment(\.modelContext) private var modelContext
@@ -55,7 +57,7 @@ struct VerificationFlowView: View {
             .ignoresSafeArea()
         }
         .sheet(isPresented: $showSnooze) {
-            SnoozeSheet()
+            SnoozeSheet(onSnoozed: onResolved)
         }
     }
 
@@ -112,6 +114,18 @@ struct VerificationFlowView: View {
             Text("Bed's made. Ante returned.")
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .foregroundStyle(AnteTheme.cream)
+            Button {
+                onResolved()
+            } label: {
+                Text("Done")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(AnteTheme.gold)
+                    .foregroundStyle(AnteTheme.feltDeep)
+                    .clipShape(Capsule())
+            }
+            .padding(.top, 8)
         }
     }
 
@@ -194,7 +208,10 @@ struct VerificationFlowView: View {
                     settings: settings,
                     modelContext: modelContext
                 )
-                alarmEngine.markVerifiedAndStop()
+                if let id = SharedStore.currentAlarmID {
+                    alarmEngine.stopRinging(id: id)
+                }
+                onResolved()
             } catch {
                 errorMessage = error.localizedDescription
             }

@@ -11,15 +11,17 @@ struct AnteAlarmMetadata: AlarmMetadata {
 
 /// Bound to the alert's secondary button ("I'm Up"). AlarmKit's stop button
 /// is provided by the system and can't be removed or gated - Apple always
-/// lets a ringing alarm be silenced. This intent's only job is to bring Ante
-/// to the foreground so the app (the source of truth on alarm state) can
-/// route straight into the bed-photo verification flow.
+/// lets a ringing alarm be silenced. Tapping this both opens the app AND
+/// durably records that a bed check is now owed, so the demand survives the
+/// alarm leaving its alerting state, the app being killed, or the phone
+/// rebooting. The debt is cleared only by a passing photo or a paid fine.
 struct WakeCheckIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "I'm Up"
     static var openAppWhenRun: Bool { true }
 
     func perform() async throws -> some IntentResult {
-        .result()
+        SharedStore.verificationRequested = true
+        return .result()
     }
 }
 
@@ -49,14 +51,21 @@ struct StopWithoutVerifyingIntent: LiveActivityIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        if let alarmID = UUID(uuidString: alarmIDString), fineCents > 0 {
-            SharedStore.pendingSettlement = SharedStore.PendingSettlement(
-                alarmID: alarmID,
-                reason: .stoppedWithoutVerifying,
-                amountCents: fineCents,
-                createdAt: Date()
-            )
+        // The app stopping an already-verified alarm must not create a debt.
+        if let verified = SharedStore.lastVerifiedAt, Date().timeIntervalSince(verified) < 120 {
+            return .result()
         }
+        // Fail SAFE, not silent: if the parameter round-trip through the
+        // system lost our values, fall back to the live settings rather than
+        // letting the user off free.
+        let alarmID = UUID(uuidString: alarmIDString) ?? SharedStore.currentAlarmID ?? UUID()
+        let cents = fineCents > 0 ? fineCents : SharedStore.fineCents
+        SharedStore.pendingSettlement = SharedStore.PendingSettlement(
+            alarmID: alarmID,
+            reason: .stoppedWithoutVerifying,
+            amountCents: cents,
+            createdAt: Date()
+        )
         return .result()
     }
 }

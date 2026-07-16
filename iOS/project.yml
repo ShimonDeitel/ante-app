@@ -37,6 +37,8 @@ targets:
       path: Ante/Info.plist
       properties:
         CFBundleDisplayName: Ante
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         UILaunchScreen: {}
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
@@ -58,6 +60,19 @@ targets:
     dependencies:
       - target: Ante
 
+  AnteUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: AnteUITests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.ante.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": NO
+    dependencies:
+      - target: Ante
+
 schemes:
   Ante:
     build:
@@ -70,3 +85,4 @@ schemes:
       gatherCoverageData: true
       targets:
         - AnteTests
+        - AnteUITests

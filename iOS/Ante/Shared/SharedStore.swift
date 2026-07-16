@@ -18,6 +18,7 @@ enum SharedStore {
         static let hasReferencePhoto = "hasReferencePhoto"
         static let currentAlarmID = "currentAlarmID"
         static let pendingSettlement = "pendingSettlement"
+        static let verificationRequested = "verificationRequested"
     }
 
     // MARK: - Settings
@@ -69,6 +70,34 @@ enum SharedStore {
     static var currentAlarmID: UUID? {
         get { (defaults.string(forKey: Key.currentAlarmID)).flatMap(UUID.init) }
         set { defaults.set(newValue?.uuidString, forKey: Key.currentAlarmID) }
+    }
+
+    /// Set by WakeCheckIntent the moment "I'm Up" is tapped on the ringing
+    /// alarm, BEFORE any UI is involved. Persisted so the bed check cannot be
+    /// dodged by killing the app: it stays demanded until a photo passes or
+    /// the fine is paid. Never gate this on live AlarmKit state - by the time
+    /// the app foregrounds, the alarm may already have left its alerting
+    /// state, which is exactly the hole that made v1 unenforceable.
+    static var verificationRequested: Bool {
+        get { defaults.bool(forKey: Key.verificationRequested) }
+        set { defaults.set(newValue, forKey: Key.verificationRequested) }
+    }
+
+    /// Stamped when a bed photo passes, just before the app silences the
+    /// alarm. Lets the stop intent distinguish "app stopping a verified
+    /// alarm" from "user killing the alarm to dodge the check".
+    static var lastVerifiedAt: Date? {
+        get { defaults.object(forKey: "lastVerifiedAt") as? Date }
+        set { defaults.set(newValue, forKey: "lastVerifiedAt") }
+    }
+
+    /// When the current alarm cycle is due to ring. THE enforcement anchor:
+    /// AlarmKit does not run our intent when its system Stop button is
+    /// tapped (verified empirically), so the app instead treats "fire time
+    /// passed without a verified photo, snooze, or payment" as a forfeit.
+    static var nextFireDate: Date? {
+        get { defaults.object(forKey: "nextFireDate") as? Date }
+        set { defaults.set(newValue, forKey: "nextFireDate") }
     }
 
     // MARK: - Pending settlement

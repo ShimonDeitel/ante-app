@@ -17,6 +17,7 @@
 		58E5AD53B570D4B4CA703249 /* StripePaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE357324B528D2B0C43BE1 /* StripePaymentProcessor.swift */; };
 		5EE615FC65CF2DFC117BAE8B /* ReferencePhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */; };
 		74F52753F5AB7F12BE27FD87 /* AnteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91031C03526E51587B9E76BB /* AnteApp.swift */; };
+		7536BF7F9DFEAE1C4F13D1C9 /* NextFire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F8B6932009C3ECE052FCA /* NextFire.swift */; };
 		82FAD43DB653E3E78F6516EA /* SettlementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC036A9FA09D5B86C2F20 /* SettlementService.swift */; };
 		87EF171C24B973C586F2A5FC /* VerificationFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */; };
 		8E14FF3964A320FD49E6A875 /* MorningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E091B628D462AF6F3913DF /* MorningRecord.swift */; };
@@ -25,6 +26,7 @@
 		AC84F72BC46EE186D7EE6090 /* LegalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44830411C7FAD841940F5246 /* LegalLinks.swift */; };
 		AE3F943D5885CF748F1AB5AF /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FF6DFFB755EE25EC8F817 /* SharedStore.swift */; };
 		B2E2C8DDD289E3B583235A5E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */; };
+		B894417FD8C5956CA674F084 /* AlarmEnforcementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A74117FDA2524FA9AB2F6 /* AlarmEnforcementUITests.swift */; };
 		BE196D1E998C21955C0ED9C4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05366936C84888289D465711 /* HomeView.swift */; };
 		C6210EC0A2994DE382264A42 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE42AE137659E326A1A0C2 /* Formatting.swift */; };
 		CEDD1E167DEDF1C0BD28EA61 /* BedPhotoVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31969DBCFFE7C75D9C34AAF6 /* BedPhotoVerifier.swift */; };
@@ -37,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3FBD1B5B49190C0F404AF309 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34C271AEC55381C8EFB63981 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 474654DD2AC68682F65C5266;
+			remoteInfo = Ante;
+		};
 		BDFE1849CA139FA12D6F0C41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 34C271AEC55381C8EFB63981 /* Project object */;
@@ -62,6 +71,8 @@
 		4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencePhotoStore.swift; sourceTree = "<group>"; };
 		4A4914CFED00A958FA38DC3E /* MockPaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentProcessor.swift; sourceTree = "<group>"; };
 		5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		5D9F8B6932009C3ECE052FCA /* NextFire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFire.swift; sourceTree = "<group>"; };
+		6A7A74117FDA2524FA9AB2F6 /* AlarmEnforcementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEnforcementUITests.swift; sourceTree = "<group>"; };
 		771246E6DF425007BA0445C1 /* AnteTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AnteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D68A93ADAE214C25A1F1678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		86EAE21E788F77A23B707724 /* AlarmEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEngine.swift; sourceTree = "<group>"; };
@@ -77,6 +88,7 @@
 		BCF77DB47B3507657991DD9D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D1A5BA474AF38E0DBB882643 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		E6C95E01449980045E6A50D7 /* Ante.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ante.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE21B9EF0893CC9E9D186756 /* AnteUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AnteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -93,8 +105,17 @@
 			children = (
 				E6C95E01449980045E6A50D7 /* Ante.app */,
 				771246E6DF425007BA0445C1 /* AnteTests.xctest */,
+				FE21B9EF0893CC9E9D186756 /* AnteUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		846BD1CDB8752C723B0108A7 /* AnteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6A7A74117FDA2524FA9AB2F6 /* AlarmEnforcementUITests.swift */,
+			);
+			path = AnteUITests;
 			sourceTree = "<group>";
 		};
 		84E1E25D05E8A3598E230553 /* Models */ = {
@@ -173,6 +194,7 @@
 			children = (
 				DF12D9A0C28BE9DC4B37D186 /* Ante */,
 				3EDC306981DBE53D49B51B6C /* AnteTests */,
+				846BD1CDB8752C723B0108A7 /* AnteUITests */,
 				41DF23A44FE31756A12ACDAE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -184,6 +206,7 @@
 				AD23FA81A4CBBE78131078FA /* DismissKeyboardOnTap.swift */,
 				18AE42AE137659E326A1A0C2 /* Formatting.swift */,
 				44830411C7FAD841940F5246 /* LegalLinks.swift */,
+				5D9F8B6932009C3ECE052FCA /* NextFire.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -235,6 +258,24 @@
 			productReference = 771246E6DF425007BA0445C1 /* AnteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8C0338212C45FE33BB9F985D /* AnteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFD5EBAC39C08368FA3244C1 /* Build configuration list for PBXNativeTarget "AnteUITests" */;
+			buildPhases = (
+				44CD177B213336054D3CEDE1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6579A0C17A184564B76AABF /* PBXTargetDependency */,
+			);
+			name = AnteUITests;
+			packageProductDependencies = (
+			);
+			productName = AnteUITests;
+			productReference = FE21B9EF0893CC9E9D186756 /* AnteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -251,6 +292,11 @@
 					63EF5FA813D198FCC26CCF54 = {
 						DevelopmentTeam = W7Q885Q59C;
 						ProvisioningStyle = Automatic;
+					};
+					8C0338212C45FE33BB9F985D = {
+						DevelopmentTeam = W7Q885Q59C;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 474654DD2AC68682F65C5266;
 					};
 				};
 			};
@@ -270,6 +316,7 @@
 			targets = (
 				474654DD2AC68682F65C5266 /* Ante */,
 				63EF5FA813D198FCC26CCF54 /* AnteTests */,
+				8C0338212C45FE33BB9F985D /* AnteUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,6 +333,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		44CD177B213336054D3CEDE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B894417FD8C5956CA674F084 /* AlarmEnforcementUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EAD7C58FFAD95ACD9CA09BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,6 +367,7 @@
 				AC84F72BC46EE186D7EE6090 /* LegalLinks.swift in Sources */,
 				477AB7A99D1ECA9779960ACD /* MockPaymentProcessor.swift in Sources */,
 				8E14FF3964A320FD49E6A875 /* MorningRecord.swift in Sources */,
+				7536BF7F9DFEAE1C4F13D1C9 /* NextFire.swift in Sources */,
 				DE51220F87A7B8ED7D026F8A /* OnboardingView.swift in Sources */,
 				10925E32C23107002887FD4E /* PayToDismissView.swift in Sources */,
 				4E518301A37E08F8B5149A6D /* PaymentProcessing.swift in Sources */,
@@ -334,9 +390,32 @@
 			target = 474654DD2AC68682F65C5266 /* Ante */;
 			targetProxy = BDFE1849CA139FA12D6F0C41 /* PBXContainerItemProxy */;
 		};
+		C6579A0C17A184564B76AABF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 474654DD2AC68682F65C5266 /* Ante */;
+			targetProxy = 3FBD1B5B49190C0F404AF309 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		111866EB9BF61BE0AC9317C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shimondeitel.ante.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ante;
+			};
+			name = Debug;
+		};
 		25F5DFE232DBBD2B4DDDE251 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -436,6 +515,24 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ante.app/Ante";
 			};
 			name = Debug;
+		};
+		4E1CEA5073DC42807D9547B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shimondeitel.ante.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ante;
+			};
+			name = Release;
 		};
 		537431D0CFDBAEB3AEA49BC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -570,6 +667,15 @@
 			buildConfigurations = (
 				4D3285F5540FA75271FAFA81 /* Debug */,
 				2EA7C9F6F54405B70B48C1F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CFD5EBAC39C08368FA3244C1 /* Build configuration list for PBXNativeTarget "AnteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				111866EB9BF61BE0AC9317C2 /* Debug */,
+				4E1CEA5073DC42807D9547B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

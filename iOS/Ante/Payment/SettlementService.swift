@@ -15,6 +15,8 @@ enum SettlementService {
         let receipt = try await PaymentProcessor.current.charge(amountCents: cents, reason: "Missed bed check")
         modelContext.insert(MorningRecord(outcome: .paidFine, fineChargedCents: cents))
         SharedStore.pendingSettlement = nil
+        SharedStore.verificationRequested = false
+        SharedStore.nextFireDate = nil
         try await alarmEngine.rearmDailySchedule(settings: settings)
         return receipt
     }
@@ -29,6 +31,9 @@ enum SettlementService {
         alarmEngine: AlarmEngine,
         settings: AppSettings
     ) async throws -> Receipt {
+        // The re-ring will demand the bed check again; until then the user
+        // has bought their way out of the current demand.
+        SharedStore.verificationRequested = false
         guard cents > 0 else {
             try await alarmEngine.snooze(settings: settings)
             return Receipt(id: UUID(), amountCents: 0, reason: "Snooze", date: Date(), isSandbox: true)
