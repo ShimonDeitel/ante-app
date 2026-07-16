@@ -1,0 +1,73 @@
+name: Ante
+options:
+  bundleIdPrefix: com.shimondeitel
+  deploymentTarget:
+    iOS: "26.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: W7Q885Q59C
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    GCC_TREAT_WARNINGS_AS_ERRORS: NO
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: NO
+    "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": NO
+
+targets:
+  Ante:
+    type: application
+    platform: iOS
+    sources:
+      - path: Ante
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.ante
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
+        INFOPLIST_KEY_UIRequiresFullScreen: YES
+        INFOPLIST_KEY_NSCameraUsageDescription: "Ante uses the camera to verify your bed is made each morning. Photos are compared on-device and never uploaded anywhere."
+        INFOPLIST_KEY_NSAlarmKitUsageDescription: "Ante needs alarm access to wake you up and hold you to your morning commitment."
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    entitlements:
+      path: Ante/Ante.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.shimondeitel.ante
+
+  AnteTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: AnteTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.ante.tests
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Ante
+
+schemes:
+  Ante:
+    build:
+      targets:
+        Ante: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - AnteTests

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use — Ante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #D4AF37;
+      --gold-bright: #F6D367;
+      --bg: #050F0A;
+      --surface: #0B1D14;
+      --text: #F5F0E0;
+      --muted: #9CB0A4;
+      --border: rgba(212,175,55,0.18);
+      --red: #B82929;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 18px 40px;
+      display: flex; align-items: center; gap: 16px; justify-content: space-between;
+      backdrop-filter: blur(20px);
+      background: rgba(5,15,10,0.85);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--gold); text-decoration: none; letter-spacing: 0.5px; }
+    .back { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .back:hover { color: var(--text); }
+    main { max-width: 720px; margin: 0 auto; padding: 64px 24px 120px; }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 48px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; color: var(--gold-bright); }
+    h2 { font-size: 20px; font-weight: 700; margin: 40px 0 12px; color: var(--text); }
+    p { color: var(--muted); margin-bottom: 16px; font-size: 16px; }
+    ul { color: var(--muted); margin: 0 0 16px 20px; font-size: 16px; }
+    ul li { margin-bottom: 8px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .callout {
+      background: rgba(184,41,41,0.1);
+      border: 1px solid rgba(184,41,41,0.35);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 16px; color: var(--text); font-weight: 500;
+    }
+    footer { text-align: center; padding: 32px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/ante-app/" class="nav-logo">ANTE</a>
+  <a href="/ante-app/" class="back">← Back to home</a>
+</nav>
+
+<main>
+  <h1>Terms of Use</h1>
+  <div class="meta">Effective date: July 2026 · App version 1.0</div>
+
+  <div class="callout">
+    <strong>Ante charges real money.</strong> By using Ante you are setting up a self-imposed forfeit: if you stop the alarm without a verified bed-check photo, or choose to snooze, the app charges the amount <em>you</em> configured, at the time you configured it. This is the entire point of the app. Charges are not refundable except as required by law.
+  </div>
+
+  <h2>1. What Ante does</h2>
+  <p>Ante wakes you at a time you set. To silence the alarm for free, you take a photo showing your bed made, which Ante compares on-device to a reference photo you provide. If you stop the alarm without a passing photo, or choose to snooze, Ante charges the fine or snooze amount you configured in advance, using the payment method you connect.</p>
+
+  <h2>2. You set your own stakes</h2>
+  <p>You choose your fine amount (from $1 up) and your snooze cost (which may be $0) before any charge can occur. You can change or reduce both at any time in Settings — changes take effect for future mornings, not charges already applied.</p>
+
+  <h2>3. Eligibility</h2>
+  <p>Ante involves real payment authorization and is intended for users 18 years of age or older, or the age of majority in your jurisdiction, whichever is greater. Do not use Ante if you are not able to enter into a binding agreement to be charged for a missed commitment.</p>
+
+  <h2>4. No refunds</h2>
+  <p>Because a charge is the direct, expected consequence of an action you took (stopping the alarm without verifying, or requesting a snooze), charges are final and non-refundable except where required by applicable law or by your payment processor's own dispute process.</p>
+
+  <h2>5. Payment processing</h2>
+  <p>Charges are processed by a third-party payment processor. Ante is not a bank or money transmitter; it instructs the processor to charge the amount you pre-configured. You are responsible for keeping a valid payment method on file. A failed charge does not exempt you from owing that amount — Ante may retry or apply it to your account balance.</p>
+
+  <h2>6. The bed-check is a good-faith verification, not a guarantee</h2>
+  <p>The on-device photo comparison is a heuristic, not a certified inspection. It can occasionally pass a photo that shouldn't pass, or fail one that should. Ante is an accountability tool, not an arbiter of fact — use it accordingly, and set stakes you're comfortable being occasionally wrong about.</p>
+
+  <h2>7. Not a substitute for a real alarm in an emergency</h2>
+  <p>Ante's alarm can always be silenced using the system-provided Stop control — Apple's alarm framework guarantees this and Ante cannot and does not override it. If you need to silence the alarm for a genuine emergency, do so; the app will simply treat that as a missed morning and apply the fine you configured.</p>
+
+  <h2>8. Termination</h2>
+  <p>You may stop using Ante and delete it at any time. Any charge already applied before deletion remains owed.</p>
+
+  <h2>9. Changes to these terms</h2>
+  <p>Material changes will be noted in the App Store release notes prior to the update going live.</p>
+
+  <h2>10. Contact</h2>
+  <p>Questions? Email: <a href="mailto:s0533495227@gmail.com">s0533495227@gmail.com</a></p>
+</main>
+
+<footer>© 2026 Ante · <a href="/ante-app/">Home</a> · <a href="/ante-app/privacy.html">Privacy Policy</a></footer>
+</body>
+</html>

@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01E144D575586454B8559969 /* AlarmIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888E8D3F3E7E8F33022422E /* AlarmIntents.swift */; };
+		08483D35B4BDC57C53F6A3CB /* AlarmEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EAE21E788F77A23B707724 /* AlarmEngine.swift */; };
+		10925E32C23107002887FD4E /* PayToDismissView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B220AA345EC291E87E854A5D /* PayToDismissView.swift */; };
+		1EF4DE91E58EE2854C5B1A0F /* AnteTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BFCF3B97B7DD985C39CE7 /* AnteTheme.swift */; };
+		419188D95E69A3955FBD0CA5 /* AnteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231132BC023C9CE28ADE003F /* AnteTests.swift */; };
+		477AB7A99D1ECA9779960ACD /* MockPaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4914CFED00A958FA38DC3E /* MockPaymentProcessor.swift */; };
+		4E518301A37E08F8B5149A6D /* PaymentProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDA453BE5C075FE9F845AF /* PaymentProcessing.swift */; };
+		58E5AD53B570D4B4CA703249 /* StripePaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE357324B528D2B0C43BE1 /* StripePaymentProcessor.swift */; };
+		5EE615FC65CF2DFC117BAE8B /* ReferencePhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */; };
+		74F52753F5AB7F12BE27FD87 /* AnteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91031C03526E51587B9E76BB /* AnteApp.swift */; };
+		82FAD43DB653E3E78F6516EA /* SettlementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC036A9FA09D5B86C2F20 /* SettlementService.swift */; };
+		87EF171C24B973C586F2A5FC /* VerificationFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */; };
+		8E14FF3964A320FD49E6A875 /* MorningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E091B628D462AF6F3913DF /* MorningRecord.swift */; };
+		A1E92CCE80613093C1B44246 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9205ACF05EBACE272A93B3 /* RootRouter.swift */; };
+		A7636C03C9B07FBA67297E32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EA073C6253D7E86CEC3717 /* Assets.xcassets */; };
+		AC84F72BC46EE186D7EE6090 /* LegalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44830411C7FAD841940F5246 /* LegalLinks.swift */; };
+		AE3F943D5885CF748F1AB5AF /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FF6DFFB755EE25EC8F817 /* SharedStore.swift */; };
+		B2E2C8DDD289E3B583235A5E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */; };
+		BE196D1E998C21955C0ED9C4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05366936C84888289D465711 /* HomeView.swift */; };
+		C6210EC0A2994DE382264A42 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE42AE137659E326A1A0C2 /* Formatting.swift */; };
+		CEDD1E167DEDF1C0BD28EA61 /* BedPhotoVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31969DBCFFE7C75D9C34AAF6 /* BedPhotoVerifier.swift */; };
+		D089031EC68EA269CC89BAC8 /* SnoozeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401F8A9C7F4FB549F7DDF3C /* SnoozeSheet.swift */; };
+		DE51220F87A7B8ED7D026F8A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF77DB47B3507657991DD9D /* OnboardingView.swift */; };
+		DE88EABCB9405B18E99072DF /* DismissKeyboardOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23FA81A4CBBE78131078FA /* DismissKeyboardOnTap.swift */; };
+		DED410CD53C895AB60750D32 /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DB37F94DB332F7B378C6D1 /* CameraCaptureView.swift */; };
+		EC1C4F670298D875999E9124 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A5BA474AF38E0DBB882643 /* HistoryView.swift */; };
+		FCA4A2B88D07A3F9AAA88483 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF43663DB3AAF07B6CFFE81 /* SettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDFE1849CA139FA12D6F0C41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34C271AEC55381C8EFB63981 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 474654DD2AC68682F65C5266;
+			remoteInfo = Ante;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01EA073C6253D7E86CEC3717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		05366936C84888289D465711 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationFlowView.swift; sourceTree = "<group>"; };
+		1280E5EBF13C47BE52523275 /* Ante.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ante.entitlements; sourceTree = "<group>"; };
+		133BFCF3B97B7DD985C39CE7 /* AnteTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteTheme.swift; sourceTree = "<group>"; };
+		1401F8A9C7F4FB549F7DDF3C /* SnoozeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeSheet.swift; sourceTree = "<group>"; };
+		18AE42AE137659E326A1A0C2 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		231132BC023C9CE28ADE003F /* AnteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteTests.swift; sourceTree = "<group>"; };
+		28EEC036A9FA09D5B86C2F20 /* SettlementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementService.swift; sourceTree = "<group>"; };
+		31969DBCFFE7C75D9C34AAF6 /* BedPhotoVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedPhotoVerifier.swift; sourceTree = "<group>"; };
+		35DB37F94DB332F7B378C6D1 /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
+		36CDA453BE5C075FE9F845AF /* PaymentProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessing.swift; sourceTree = "<group>"; };
+		44830411C7FAD841940F5246 /* LegalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalLinks.swift; sourceTree = "<group>"; };
+		4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencePhotoStore.swift; sourceTree = "<group>"; };
+		4A4914CFED00A958FA38DC3E /* MockPaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentProcessor.swift; sourceTree = "<group>"; };
+		5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		771246E6DF425007BA0445C1 /* AnteTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AnteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		86EAE21E788F77A23B707724 /* AlarmEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEngine.swift; sourceTree = "<group>"; };
+		8FBE357324B528D2B0C43BE1 /* StripePaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentProcessor.swift; sourceTree = "<group>"; };
+		91031C03526E51587B9E76BB /* AnteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteApp.swift; sourceTree = "<group>"; };
+		957FF6DFFB755EE25EC8F817 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
+		AC9205ACF05EBACE272A93B3 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		AD23FA81A4CBBE78131078FA /* DismissKeyboardOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardOnTap.swift; sourceTree = "<group>"; };
+		AEF43663DB3AAF07B6CFFE81 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B220AA345EC291E87E854A5D /* PayToDismissView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayToDismissView.swift; sourceTree = "<group>"; };
+		B3E091B628D462AF6F3913DF /* MorningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningRecord.swift; sourceTree = "<group>"; };
+		B888E8D3F3E7E8F33022422E /* AlarmIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmIntents.swift; sourceTree = "<group>"; };
+		BCF77DB47B3507657991DD9D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D1A5BA474AF38E0DBB882643 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		E6C95E01449980045E6A50D7 /* Ante.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ante.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		3EDC306981DBE53D49B51B6C /* AnteTests */ = {
+			isa = PBXGroup;
+			children = (
+				231132BC023C9CE28ADE003F /* AnteTests.swift */,
+			);
+			path = AnteTests;
+			sourceTree = "<group>";
+		};
+		41DF23A44FE31756A12ACDAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6C95E01449980045E6A50D7 /* Ante.app */,
+				771246E6DF425007BA0445C1 /* AnteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84E1E25D05E8A3598E230553 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */,
+				B3E091B628D462AF6F3913DF /* MorningRecord.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A384ADF2491F5C212B02C01C /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				31969DBCFFE7C75D9C34AAF6 /* BedPhotoVerifier.swift */,
+				4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */,
+			);
+			path = Verification;
+			sourceTree = "<group>";
+		};
+		B1847B13DDE7DDA0F087C232 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				4A4914CFED00A958FA38DC3E /* MockPaymentProcessor.swift */,
+				36CDA453BE5C075FE9F845AF /* PaymentProcessing.swift */,
+				28EEC036A9FA09D5B86C2F20 /* SettlementService.swift */,
+				8FBE357324B528D2B0C43BE1 /* StripePaymentProcessor.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		C14764678393FAE80B0C2D72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35DB37F94DB332F7B378C6D1 /* CameraCaptureView.swift */,
+				D1A5BA474AF38E0DBB882643 /* HistoryView.swift */,
+				05366936C84888289D465711 /* HomeView.swift */,
+				BCF77DB47B3507657991DD9D /* OnboardingView.swift */,
+				B220AA345EC291E87E854A5D /* PayToDismissView.swift */,
+				AC9205ACF05EBACE272A93B3 /* RootRouter.swift */,
+				AEF43663DB3AAF07B6CFFE81 /* SettingsView.swift */,
+				1401F8A9C7F4FB549F7DDF3C /* SnoozeSheet.swift */,
+				090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C4A1DEA9A00815280596C1A5 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				86EAE21E788F77A23B707724 /* AlarmEngine.swift */,
+				B888E8D3F3E7E8F33022422E /* AlarmIntents.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		DF12D9A0C28BE9DC4B37D186 /* Ante */ = {
+			isa = PBXGroup;
+			children = (
+				1280E5EBF13C47BE52523275 /* Ante.entitlements */,
+				91031C03526E51587B9E76BB /* AnteApp.swift */,
+				01EA073C6253D7E86CEC3717 /* Assets.xcassets */,
+				C4A1DEA9A00815280596C1A5 /* Alarm */,
+				84E1E25D05E8A3598E230553 /* Models */,
+				B1847B13DDE7DDA0F087C232 /* Payment */,
+				F750EB1B1BF445C4F31ACE77 /* Shared */,
+				F70AA1EACF8EB2931BAFC635 /* Support */,
+				A384ADF2491F5C212B02C01C /* Verification */,
+				C14764678393FAE80B0C2D72 /* Views */,
+			);
+			path = Ante;
+			sourceTree = "<group>";
+		};
+		E5F946B9D2EF3632A3BC8C8A = {
+			isa = PBXGroup;
+			children = (
+				DF12D9A0C28BE9DC4B37D186 /* Ante */,
+				3EDC306981DBE53D49B51B6C /* AnteTests */,
+				41DF23A44FE31756A12ACDAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F70AA1EACF8EB2931BAFC635 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				133BFCF3B97B7DD985C39CE7 /* AnteTheme.swift */,
+				AD23FA81A4CBBE78131078FA /* DismissKeyboardOnTap.swift */,
+				18AE42AE137659E326A1A0C2 /* Formatting.swift */,
+				44830411C7FAD841940F5246 /* LegalLinks.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		F750EB1B1BF445C4F31ACE77 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				957FF6DFFB755EE25EC8F817 /* SharedStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		474654DD2AC68682F65C5266 /* Ante */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96F4DB19218EEA3E4BC1831F /* Build configuration list for PBXNativeTarget "Ante" */;
+			buildPhases = (
+				AD85F243800E4368C8E41FA4 /* Sources */,
+				F190A49C7ABA665E453C4278 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ante;
+			packageProductDependencies = (
+			);
+			productName = Ante;
+			productReference = E6C95E01449980045E6A50D7 /* Ante.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63EF5FA813D198FCC26CCF54 /* AnteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B69E28C5EA0A4F9B461B2644 /* Build configuration list for PBXNativeTarget "AnteTests" */;
+			buildPhases = (
+				8EAD7C58FFAD95ACD9CA09BC /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6EE127979FD32651A321C9BF /* PBXTargetDependency */,
+			);
+			name = AnteTests;
+			packageProductDependencies = (
+			);
+			productName = AnteTests;
+			productReference = 771246E6DF425007BA0445C1 /* AnteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		34C271AEC55381C8EFB63981 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					474654DD2AC68682F65C5266 = {
+						DevelopmentTeam = W7Q885Q59C;
+						ProvisioningStyle = Automatic;
+					};
+					63EF5FA813D198FCC26CCF54 = {
+						DevelopmentTeam = W7Q885Q59C;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 065EE13067CF9FDE89A60F16 /* Build configuration list for PBXProject "Ante" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E5F946B9D2EF3632A3BC8C8A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 41DF23A44FE31756A12ACDAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				474654DD2AC68682F65C5266 /* Ante */,
+				63EF5FA813D198FCC26CCF54 /* AnteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F190A49C7ABA665E453C4278 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7636C03C9B07FBA67297E32 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8EAD7C58FFAD95ACD9CA09BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				419188D95E69A3955FBD0CA5 /* AnteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD85F243800E4368C8E41FA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08483D35B4BDC57C53F6A3CB /* AlarmEngine.swift in Sources */,
+				01E144D575586454B8559969 /* AlarmIntents.swift in Sources */,
+				74F52753F5AB7F12BE27FD87 /* AnteApp.swift in Sources */,
+				1EF4DE91E58EE2854C5B1A0F /* AnteTheme.swift in Sources */,
+				B2E2C8DDD289E3B583235A5E /* AppSettings.swift in Sources */,
+				CEDD1E167DEDF1C0BD28EA61 /* BedPhotoVerifier.swift in Sources */,
+				DED410CD53C895AB60750D32 /* CameraCaptureView.swift in Sources */,
+				DE88EABCB9405B18E99072DF /* DismissKeyboardOnTap.swift in Sources */,
+				C6210EC0A2994DE382264A42 /* Formatting.swift in Sources */,
+				EC1C4F670298D875999E9124 /* HistoryView.swift in Sources */,
+				BE196D1E998C21955C0ED9C4 /* HomeView.swift in Sources */,
+				AC84F72BC46EE186D7EE6090 /* LegalLinks.swift in Sources */,
+				477AB7A99D1ECA9779960ACD /* MockPaymentProcessor.swift in Sources */,
+				8E14FF3964A320FD49E6A875 /* MorningRecord.swift in Sources */,
+				DE51220F87A7B8ED7D026F8A /* OnboardingView.swift in Sources */,
+				10925E32C23107002887FD4E /* PayToDismissView.swift in Sources */,
+				4E518301A37E08F8B5149A6D /* PaymentProcessing.swift in Sources */,
+				5EE615FC65CF2DFC117BAE8B /* ReferencePhotoStore.swift in Sources */,
+				A1E92CCE80613093C1B44246 /* RootRouter.swift in Sources */,
+				FCA4A2B88D07A3F9AAA88483 /* SettingsView.swift in Sources */,
+				82FAD43DB653E3E78F6516EA /* SettlementService.swift in Sources */,
+				AE3F943D5885CF748F1AB5AF /* SharedStore.swift in Sources */,
+				D089031EC68EA269CC89BAC8 /* SnoozeSheet.swift in Sources */,
+				58E5AD53B570D4B4CA703249 /* StripePaymentProcessor.swift in Sources */,
+				87EF171C24B973C586F2A5FC /* VerificationFlowView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6EE127979FD32651A321C9BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 474654DD2AC68682F65C5266 /* Ante */;
+			targetProxy = BDFE1849CA139FA12D6F0C41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		25F5DFE232DBBD2B4DDDE251 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = W7Q885Q59C;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2EA7C9F6F54405B70B48C1F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shimondeitel.ante.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ante.app/Ante";
+			};
+			name = Release;
+		};
+		4D3285F5540FA75271FAFA81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shimondeitel.ante.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ante.app/Ante";
+			};
+			name = Debug;
+		};
+		537431D0CFDBAEB3AEA49BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = W7Q885Q59C;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6D9017526796D4BF3A58F4DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSAlarmKitUsageDescription = "Ante needs alarm access to wake you up and hold you to your morning commitment.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Ante uses the camera to verify your bed is made each morning. Photos are compared on-device and never uploaded anywhere.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shimondeitel.ante;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E55E66878ED1E1D6AAE3A675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSAlarmKitUsageDescription = "Ante needs alarm access to wake you up and hold you to your morning commitment.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Ante uses the camera to verify your bed is made each morning. Photos are compared on-device and never uploaded anywhere.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shimondeitel.ante;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		065EE13067CF9FDE89A60F16 /* Build configuration list for PBXProject "Ante" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				537431D0CFDBAEB3AEA49BC3 /* Debug */,
+				25F5DFE232DBBD2B4DDDE251 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		96F4DB19218EEA3E4BC1831F /* Build configuration list for PBXNativeTarget "Ante" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D9017526796D4BF3A58F4DF /* Debug */,
+				E55E66878ED1E1D6AAE3A675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B69E28C5EA0A4F9B461B2644 /* Build configuration list for PBXNativeTarget "AnteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D3285F5540FA75271FAFA81 /* Debug */,
+				2EA7C9F6F54405B70B48C1F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 34C271AEC55381C8EFB63981 /* Project object */;
+}

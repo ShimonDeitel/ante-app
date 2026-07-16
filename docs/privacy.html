@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Ante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #D4AF37;
+      --gold-bright: #F6D367;
+      --bg: #050F0A;
+      --surface: #0B1D14;
+      --text: #F5F0E0;
+      --muted: #9CB0A4;
+      --border: rgba(212,175,55,0.18);
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 18px 40px;
+      display: flex; align-items: center; gap: 16px; justify-content: space-between;
+      backdrop-filter: blur(20px);
+      background: rgba(5,15,10,0.85);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--gold); text-decoration: none; letter-spacing: 0.5px; }
+    .back { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .back:hover { color: var(--text); }
+    main { max-width: 720px; margin: 0 auto; padding: 64px 24px 120px; }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 48px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; color: var(--gold-bright); }
+    h2 { font-size: 20px; font-weight: 700; margin: 40px 0 12px; color: var(--text); }
+    p { color: var(--muted); margin-bottom: 16px; font-size: 16px; }
+    ul { color: var(--muted); margin: 0 0 16px 20px; font-size: 16px; }
+    ul li { margin-bottom: 8px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .callout {
+      background: rgba(212,175,55,0.08);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 16px; color: var(--text); font-weight: 500;
+    }
+    footer { text-align: center; padding: 32px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/ante-app/" class="nav-logo">ANTE</a>
+  <a href="/ante-app/" class="back">← Back to home</a>
+</nav>
+
+<main>
+  <h1>Privacy Policy</h1>
+  <div class="meta">Effective date: July 2026 · App version 1.0</div>
+
+  <div class="callout">
+    <strong>Short version:</strong> Your bed-check photos are compared entirely on your device and never leave your phone. The only thing that ever reaches a server is the payment needed to process a fine or a paid snooze — and Ante never sees or stores your card details itself.
+  </div>
+
+  <h2>1. Photos never leave your device</h2>
+  <p>Ante asks you to take a reference photo of your made bed once, and a comparison photo each morning. Both photos are analyzed using Apple's on-device Vision framework, which produces a similarity score locally. Neither photo is uploaded, transmitted, or shared with Ante or any third party. The reference photo is stored only in the app's local storage on your device and is deleted if you delete the app.</p>
+
+  <h2>2. What Ante stores on your device</h2>
+  <ul>
+    <li>Your wake time and repeat days</li>
+    <li>Your fine amount and snooze cost settings</li>
+    <li>The reference bed photo</li>
+    <li>A history of past mornings (verified or charged, and the amount) so you can see your own record</li>
+  </ul>
+  <p>None of the above is transmitted anywhere unless stated otherwise below.</p>
+
+  <h2>3. Real-money charges</h2>
+  <p>Ante charges real money when you stop the alarm without a verified bed photo, or when you pay to snooze. These charges are the core mechanic of the app — you set both amounts yourself before they can ever be applied, and can change or turn them off in Settings at any time. Charges are processed by a third-party payment processor (Stripe); Ante's backend never stores your full card number. The amount charged, the date, and the reason are stored in your on-device history so you always have a record of what you were charged and why.</p>
+
+  <h2>4. Permissions used</h2>
+  <ul>
+    <li><strong>Camera:</strong> used only to take your reference and daily bed-check photos, analyzed entirely on-device.</li>
+    <li><strong>Alarms (AlarmKit):</strong> used to wake you at your set time with an alert that can break through silent mode, the same as the system Clock app.</li>
+  </ul>
+
+  <h2>5. Analytics and advertising</h2>
+  <p>Ante contains no third-party analytics SDK, no advertising network, and no user tracking.</p>
+
+  <h2>6. Children</h2>
+  <p>Ante is not directed at children and involves real-money charges. It is not intended for use by anyone under 18.</p>
+
+  <h2>7. Data deletion</h2>
+  <p>Deleting the app removes your reference photo, settings, and history from your device. Payment records held by the payment processor are retained per their own policy and applicable financial recordkeeping law.</p>
+
+  <h2>8. Changes to this policy</h2>
+  <p>Any material changes will be noted in the App Store release notes prior to the update going live.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions? Email: <a href="mailto:s0533495227@gmail.com">s0533495227@gmail.com</a></p>
+</main>
+
+<footer>© 2026 Ante · <a href="/ante-app/">Home</a> · <a href="/ante-app/terms.html">Terms of Use</a></footer>
+</body>
+</html>
