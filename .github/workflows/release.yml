@@ -2,7 +2,7 @@ name: Release to App Store
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [master]
     paths: ['iOS/**']
 jobs:
   build:
