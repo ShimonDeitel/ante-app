@@ -1,0 +1,17 @@
+name: Runner probe
+on: workflow_dispatch
+jobs:
+  probe-arm:
+    runs-on: macos-26
+    timeout-minutes: 5
+    steps:
+      - run: |
+          uname -m
+          xcodebuild -version
+  probe-intel:
+    runs-on: macos-26-intel
+    timeout-minutes: 5
+    steps:
+      - run: |
+          uname -m
+          xcodebuild -version
