@@ -50,7 +50,6 @@
 		01EA073C6253D7E86CEC3717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05366936C84888289D465711 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationFlowView.swift; sourceTree = "<group>"; };
-		1280E5EBF13C47BE52523275 /* Ante.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ante.entitlements; sourceTree = "<group>"; };
 		133BFCF3B97B7DD985C39CE7 /* AnteTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteTheme.swift; sourceTree = "<group>"; };
 		1401F8A9C7F4FB549F7DDF3C /* SnoozeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeSheet.swift; sourceTree = "<group>"; };
 		18AE42AE137659E326A1A0C2 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
@@ -155,7 +154,6 @@
 		DF12D9A0C28BE9DC4B37D186 /* Ante */ = {
 			isa = PBXGroup;
 			children = (
-				1280E5EBF13C47BE52523275 /* Ante.entitlements */,
 				91031C03526E51587B9E76BB /* AnteApp.swift */,
 				01EA073C6253D7E86CEC3717 /* Assets.xcassets */,
 				7D68A93ADAE214C25A1F1678 /* Info.plist */,
@@ -517,7 +515,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Ante/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -535,7 +532,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Ante/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

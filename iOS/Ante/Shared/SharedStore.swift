@@ -1,14 +1,11 @@
 import Foundation
 
-/// Backed by an App Group suite so state written from an AlarmKit intent
-/// (which may run out-of-process from the main app) is visible the next
-/// time the app comes to the foreground.
+/// AlarmKit's stop/secondary button intents are LiveActivityIntents, which
+/// run inside the app's own process (the system launches the app in the
+/// background if needed), so plain UserDefaults is shared state enough --
+/// no App Group container required.
 enum SharedStore {
-    static let suiteName = "group.com.shimondeitel.ante"
-
-    static var defaults: UserDefaults {
-        UserDefaults(suiteName: suiteName) ?? .standard
-    }
+    static var defaults: UserDefaults { .standard }
 
     private enum Key {
         static let wakeHour = "wakeHour"

@@ -46,12 +46,6 @@ targets:
         NSCameraUsageDescription: "Ante uses the camera to verify your bed is made each morning. Photos are compared on-device and never uploaded anywhere."
         NSAlarmKitUsageDescription: "Ante needs alarm access to wake you up and hold you to your morning commitment."
         ITSAppUsesNonExemptEncryption: false
-    entitlements:
-      path: Ante/Ante.entitlements
-      properties:
-        com.apple.security.application-groups:
-          - group.com.shimondeitel.ante
-
   AnteTests:
     type: bundle.unit-test
     platform: iOS
