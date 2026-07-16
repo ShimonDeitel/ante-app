@@ -64,6 +64,7 @@
 		4A4914CFED00A958FA38DC3E /* MockPaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentProcessor.swift; sourceTree = "<group>"; };
 		5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		771246E6DF425007BA0445C1 /* AnteTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AnteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D68A93ADAE214C25A1F1678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		86EAE21E788F77A23B707724 /* AlarmEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEngine.swift; sourceTree = "<group>"; };
 		8FBE357324B528D2B0C43BE1 /* StripePaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentProcessor.swift; sourceTree = "<group>"; };
 		91031C03526E51587B9E76BB /* AnteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteApp.swift; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 				1280E5EBF13C47BE52523275 /* Ante.entitlements */,
 				91031C03526E51587B9E76BB /* AnteApp.swift */,
 				01EA073C6253D7E86CEC3717 /* Assets.xcassets */,
+				7D68A93ADAE214C25A1F1678 /* Info.plist */,
 				C4A1DEA9A00815280596C1A5 /* Alarm */,
 				84E1E25D05E8A3598E230553 /* Models */,
 				B1847B13DDE7DDA0F087C232 /* Payment */,
@@ -517,14 +519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSAlarmKitUsageDescription = "Ante needs alarm access to wake you up and hold you to your morning commitment.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Ante uses the camera to verify your bed is made each morning. Photos are compared on-device and never uploaded anywhere.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_FILE = Ante/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,14 +537,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSAlarmKitUsageDescription = "Ante needs alarm access to wake you up and hold you to your morning commitment.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Ante uses the camera to verify your bed is made each morning. Photos are compared on-device and never uploaded anywhere.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_FILE = Ante/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
