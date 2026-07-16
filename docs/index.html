@@ -202,9 +202,14 @@
   }
   .lede { color: var(--muted); font-size: 17px; max-width: 600px; line-height: 1.7; }
 
-  .fold { opacity: 0; transform: perspective(900px) rotateX(14deg) translateY(56px);
-    transition: opacity 0.8s ease, transform 0.9s cubic-bezier(.2,.8,.2,1); will-change: transform; }
-  .fold.in { opacity: 1; transform: perspective(900px) rotateX(0) translateY(0); }
+  /* Reveal via keyframe animation, NOT transition: transitioned 3D transforms
+     with will-change left whole sections unpainted in Chrome's compositor. */
+  .fold { opacity: 0; }
+  .fold.in { opacity: 1; animation: foldin 0.9s cubic-bezier(.2,.8,.2,1) backwards; }
+  @keyframes foldin {
+    from { opacity: 0; transform: perspective(900px) rotateX(14deg) translateY(56px); }
+    to   { opacity: 1; transform: none; }
+  }
 
   .cards {
     margin-top: 54px;
@@ -220,8 +225,10 @@
     border: 1px solid var(--border);
     transition: transform 0.18s ease-out, box-shadow 0.3s;
     box-shadow: 0 24px 50px -28px rgba(0,0,0,0.8);
-    animation: float 7s ease-in-out infinite;
-    animation-delay: var(--fd, 0s);
+  }
+  .card.fold.in {
+    animation: foldin 0.9s cubic-bezier(.2,.8,.2,1) backwards,
+               float 7s ease-in-out infinite calc(var(--fd, 0s) + 1s);
   }
   @keyframes float { 50% { translate: 0 -10px; } }
   .card:hover { box-shadow: 0 45px 80px -30px rgba(0,0,0,0.9), 0 0 60px -20px rgba(212,175,55,0.4); }
@@ -335,11 +342,16 @@
       radial-gradient(ellipse at 50% 20%, var(--gold-hi), var(--gold) 60%, var(--gold-deep));
     border: 2px dashed rgba(245,240,224,0.5);
     box-shadow: 0 10px 16px -6px rgba(0,0,0,0.7);
-    opacity: 0; translate: 0 -300px;
-    transition: opacity 0.4s ease, translate 0.7s cubic-bezier(.25,1.2,.35,1);
-    transition-delay: var(--cd);
+    opacity: 0;
   }
-  .pyramid.in .pchip { opacity: 1; translate: 0 0; }
+  .pyramid.in .pchip {
+    opacity: 1;
+    animation: chipdrop 0.7s cubic-bezier(.25,1.2,.35,1) var(--cd) backwards;
+  }
+  @keyframes chipdrop {
+    from { opacity: 0; translate: 0 -300px; }
+    to   { opacity: 1; translate: 0 0; }
+  }
 
   footer {
     margin-top: 40px; padding: 46px 24px 60px; text-align: center;
