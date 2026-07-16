@@ -17,7 +17,7 @@ struct SnoozeSheet: View {
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                     .foregroundStyle(AnteTheme.cream)
                 Text(settings.snoozeCostCents == 0
-                     ? "Free, for now — set a snooze cost in Settings if you want it to sting."
+                     ? "Free, for now. Set a snooze cost in Settings if you want it to sting."
                      : "This charges \(Money.format(cents: settings.snoozeCostCents)). The bed check still has to happen when it rings again.")
                     .font(.subheadline)
                     .foregroundStyle(AnteTheme.cream.opacity(0.65))

@@ -10,7 +10,7 @@ struct AnteAlarmMetadata: AlarmMetadata {
 }
 
 /// Bound to the alert's secondary button ("I'm Up"). AlarmKit's stop button
-/// is provided by the system and can't be removed or gated — Apple always
+/// is provided by the system and can't be removed or gated - Apple always
 /// lets a ringing alarm be silenced. This intent's only job is to bring Ante
 /// to the foreground so the app (the source of truth on alarm state) can
 /// route straight into the bed-photo verification flow.
@@ -24,7 +24,7 @@ struct WakeCheckIntent: LiveActivityIntent {
 }
 
 /// Bound to the alert's system-provided stop button. Tapping it always
-/// silences the alarm — that's an AlarmKit guarantee, not something Ante can
+/// silences the alarm - that's an AlarmKit guarantee, not something Ante can
 /// override. What Ante *can* control is the consequence: if the bed photo
 /// was never verified for this cycle, this intent records a pending
 /// settlement so the very next time the app is opened, it blocks on a

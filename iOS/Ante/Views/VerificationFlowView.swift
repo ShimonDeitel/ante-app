@@ -68,7 +68,7 @@ struct VerificationFlowView: View {
                 .font(.system(size: 26, weight: .bold, design: .rounded))
                 .foregroundStyle(AnteTheme.cream)
                 .multilineTextAlignment(.center)
-            Text("On-device only — the photo never leaves your phone.")
+            Text("Checked on-device. The photo never leaves your phone.")
                 .font(.footnote)
                 .foregroundStyle(AnteTheme.cream.opacity(0.6))
                 .multilineTextAlignment(.center)
@@ -149,7 +149,7 @@ struct VerificationFlowView: View {
             Button {
                 payFine()
             } label: {
-                Text(isSettling ? "Charging…" : "Can't do it — charge \(Money.format(cents: settings.fineCents))")
+                Text(isSettling ? "Charging…" : "Can't do it, charge \(Money.format(cents: settings.fineCents))")
                     .font(.subheadline)
                     .foregroundStyle(AnteTheme.cream.opacity(0.75))
             }
@@ -162,7 +162,7 @@ struct VerificationFlowView: View {
         Task {
             guard let reference = ReferencePhotoStore.load() else {
                 phase = .failed
-                errorMessage = "No reference photo saved — set one in Settings."
+                errorMessage = "No reference photo saved. Set one in Settings."
                 return
             }
             do {

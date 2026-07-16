@@ -20,6 +20,7 @@ struct HomeView: View {
                 }
                 .padding(24)
             }
+            .background(AnteTheme.feltGradient.ignoresSafeArea())
             .navigationTitle("Ante")
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar {

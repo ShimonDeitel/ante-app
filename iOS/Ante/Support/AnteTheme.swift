@@ -91,30 +91,53 @@ struct ScanSweepView: View {
 }
 
 /// A handful of chips tossed outward, used the instant a charge posts.
+/// Renders nothing at rest - chips exist only for the flight itself, so no
+/// stray chip is ever visible before the trigger flips.
 struct ChipBurstView: View {
     let trigger: Bool
     @State private var particles: [ChipParticle] = []
+    @State private var flying = false
 
     struct ChipParticle: Identifiable {
         let id = UUID()
         let angle: Double
         let distance: CGFloat
         let delay: Double
+        let color: Color
     }
 
     var body: some View {
         ZStack {
-            ForEach(particles) { particle in
-                PokerChipView(color: [AnteTheme.gold, AnteTheme.chipRed, AnteTheme.cream].randomElement()!, diameter: 22)
-                    .modifier(BurstOffset(angle: particle.angle, distance: particle.distance, active: trigger))
-                    .opacity(trigger ? 0 : 1)
-                    .animation(.easeOut(duration: 0.9).delay(particle.delay), value: trigger)
+            if trigger {
+                ForEach(particles) { particle in
+                    PokerChipView(color: particle.color, diameter: 22)
+                        .modifier(BurstOffset(angle: particle.angle, distance: particle.distance, active: flying))
+                        .opacity(flying ? 0 : 1)
+                        .animation(.easeOut(duration: 0.9).delay(particle.delay), value: flying)
+                }
             }
         }
         .onAppear {
             particles = (0..<10).map { i in
-                ChipParticle(angle: Double(i) * (360.0 / 10.0), distance: CGFloat.random(in: 70...130), delay: Double(i) * 0.02)
+                ChipParticle(
+                    angle: Double(i) * (360.0 / 10.0),
+                    distance: CGFloat.random(in: 70...130),
+                    delay: Double(i) * 0.02,
+                    color: [AnteTheme.gold, AnteTheme.chipRed, AnteTheme.cream].randomElement()!
+                )
             }
+            if trigger { launch() }
+        }
+        .onChange(of: trigger) { _, isOn in
+            if isOn { launch() }
+        }
+    }
+
+    private func launch() {
+        flying = false
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 40_000_000)
+            flying = true
         }
     }
 }

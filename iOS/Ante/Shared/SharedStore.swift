@@ -79,7 +79,7 @@ enum SharedStore {
     /// Written by the alarm's stop/secondary App Intents (which may run without
     /// opening the app) whenever an alarm cycle ends without a verified bed
     /// photo. The app checks this on every foreground and blocks all other
-    /// screens until it's resolved (task done retroactively is not accepted —
+    /// screens until it's resolved (task done retroactively is not accepted -
     /// the fine is owed; the user pays it here).
     struct PendingSettlement: Codable {
         var alarmID: UUID

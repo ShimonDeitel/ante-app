@@ -11,11 +11,24 @@ struct RootRouter: View {
         ZStack {
             AnteTheme.feltGradient.ignoresSafeArea()
 
-            if !settings.onboardingComplete {
-                OnboardingView()
-            } else {
+            #if DEBUG
+            // Screenshot/debug router: SIMCTL_CHILD_ANTE_SCREEN=home|verify|settle
+            switch ProcessInfo.processInfo.environment["ANTE_SCREEN"] {
+            case "home":
                 HomeView()
+            case "verify":
+                VerificationFlowView()
+            case "settle":
+                PayToDismissView(
+                    settlement: .init(alarmID: UUID(), reason: .stoppedWithoutVerifying, amountCents: 2500, createdAt: Date()),
+                    onResolved: {}
+                )
+            default:
+                routedContent
             }
+            #else
+            routedContent
+            #endif
         }
         .fullScreenCover(isPresented: verificationBinding) {
             VerificationFlowView()
@@ -29,6 +42,15 @@ struct RootRouter: View {
             if phase == .active {
                 refreshBlockingState()
             }
+        }
+    }
+
+    @ViewBuilder
+    private var routedContent: some View {
+        if !settings.onboardingComplete {
+            OnboardingView()
+        } else {
+            HomeView()
         }
     }
 

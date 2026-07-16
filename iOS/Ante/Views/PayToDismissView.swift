@@ -70,7 +70,7 @@ struct PayToDismissView: View {
                 .font(.system(size: 22, weight: .bold, design: .rounded))
                 .foregroundStyle(AnteTheme.cream)
                 .multilineTextAlignment(.center)
-            Text("The ante was \(Money.format(cents: settlement.amountCents)). It's owed now — set at onboarding, before this morning.")
+            Text("The ante was \(Money.format(cents: settlement.amountCents)). It's owed now. You set it before this morning, not after.")
                 .font(.subheadline)
                 .foregroundStyle(AnteTheme.cream.opacity(0.65))
                 .multilineTextAlignment(.center)
@@ -97,7 +97,7 @@ struct PayToDismissView: View {
                     .font(.footnote)
                     .foregroundStyle(AnteTheme.cream.opacity(0.6))
                 if receipt.isSandbox {
-                    Text("SANDBOX CHARGE — no real card on file yet")
+                    Text("SANDBOX CHARGE. No real card on file yet")
                         .font(.caption2)
                         .fontWeight(.bold)
                         .foregroundStyle(AnteTheme.chipRed)

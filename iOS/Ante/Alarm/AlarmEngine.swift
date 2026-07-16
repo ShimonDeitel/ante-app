@@ -57,7 +57,7 @@ final class AlarmEngine {
     }
 
     /// Schedules (or reschedules) Ante's single daily alarm from the given
-    /// settings. Any previous Ante alarm is cancelled first — this app only
+    /// settings. Any previous Ante alarm is cancelled first - this app only
     /// ever runs one active commitment at a time.
     func scheduleDailyAlarm(settings: AppSettings) async throws {
         let weekdays: [Locale.Weekday] = settings.repeatWeekdayRawValues.compactMap { Locale.Weekday(rawValue: $0) }
@@ -70,7 +70,7 @@ final class AlarmEngine {
     /// Silences the currently-ringing alarm (the snooze fee was already
     /// charged by the caller) and re-alerts once after `snoozeMinutes`. The
     /// same fine still applies if the snoozed alarm is also stopped without
-    /// verifying — snoozing buys time, not amnesty.
+    /// verifying - snoozing buys time, not amnesty.
     func snooze(settings: AppSettings) async throws {
         guard let id = SharedStore.currentAlarmID else { return }
         try? AlarmManager.shared.stop(id: id)
