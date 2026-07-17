@@ -8,6 +8,7 @@ final class AlarmEnforcementUITests: XCTestCase {
 
     func testStoppingAlarmWithoutVerifyingDemandsTheFine() throws {
         let app = XCUIApplication()
+        app.launchEnvironment["ANTE_UI_TEST_RESET"] = "1"
         app.launchEnvironment["ANTE_TEST_ALARM"] = "40"
         app.launch()
 
@@ -76,15 +77,28 @@ final class AlarmEnforcementUITests: XCTestCase {
             "ENFORCEMENT HOLE: stopped the alarm without verifying and the app demanded nothing. Tree: \(app.debugDescription.prefix(1500))"
         )
 
-        // 5. Drive the money path to settlement.
+        // 5. Drive a money path to settlement. The "verify" shape's capture
+        //    screen only grows a direct pay button AFTER a failed photo
+        //    attempt - it has no immediate one. Its always-available money
+        //    affordance is "Snooze instead", which also directly proves the
+        //    owner's other explicit requirement: snoozing charges on the
+        //    spot. Either shape ending in a real charge is valid proof the
+        //    enforcement hole is closed.
         if shape == "verify" {
-            let cantDoIt = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Can'")).firstMatch
-            XCTAssertTrue(cantDoIt.waitForExistence(timeout: 10), "No pay escape on the verify screen")
-            cantDoIt.tap()
-            // Paying from the verify screen settles silently and returns home.
+            let snoozeInstead = app.buttons["Snooze instead"]
+            XCTAssertTrue(snoozeInstead.waitForExistence(timeout: 10), "No snooze escape on the verify screen")
+            snoozeInstead.tap()
+
+            let payAndSnooze = app.buttons.matching(NSPredicate(format: "label CONTAINS 'snooze'")).firstMatch
+            XCTAssertTrue(payAndSnooze.waitForExistence(timeout: 10), "Snooze sheet never appeared")
+            payAndSnooze.tap()
+
+            // Charging + dismissing the sheet should clear the blocking
+            // cover entirely (a fresh one-time alarm is re-armed for the
+            // snooze window), landing back on Home.
             XCTAssertTrue(
                 app.staticTexts["Recent mornings"].waitForExistence(timeout: 25),
-                "Fine payment from verify screen did not settle back to Home"
+                "Paying to snooze did not resolve back to Home"
             )
         } else {
             // The cover may still be animating in; a swallowed tap must not

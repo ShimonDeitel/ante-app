@@ -21,6 +21,7 @@ enum BlockingScreen: Identifiable, Equatable {
 struct RootRouter: View {
     @Environment(AlarmEngine.self) private var alarmEngine
     @Environment(AppSettings.self) private var settings
+    @Environment(AppleSignInService.self) private var auth
     @Environment(\.scenePhase) private var scenePhase
 
     @State private var blocking: BlockingScreen?
@@ -72,12 +73,8 @@ struct RootRouter: View {
             // cycle (skip onboarding, dummy reference photo, one-shot alarm).
             if let raw = ProcessInfo.processInfo.environment["ANTE_TEST_ALARM"],
                let seconds = TimeInterval(raw) {
-                let renderer = UIGraphicsImageRenderer(size: CGSize(width: 400, height: 400))
-                let dummy = renderer.image { ctx in
-                    UIColor.systemBrown.setFill()
-                    ctx.fill(CGRect(x: 0, y: 0, width: 400, height: 400))
-                }
-                ReferencePhotoStore.save(dummy)
+                auth.devBypass()
+                settings.hasAgreedToTerms = true
                 settings.onboardingComplete = true
                 _ = await alarmEngine.requestAuthorizationIfNeeded()
                 try? await alarmEngine.scheduleTestAlarm(after: seconds, settings: settings)
@@ -90,6 +87,11 @@ struct RootRouter: View {
     private var routedContent: some View {
         if !settings.onboardingComplete {
             OnboardingView()
+        } else if !auth.isSignedIn {
+            // Rare: Apple revoked the credential after onboarding completed.
+            // Re-block on sign-in rather than leaving the app in a state
+            // where charges could apply to no identity.
+            SignInRequiredView()
         } else {
             HomeView()
         }

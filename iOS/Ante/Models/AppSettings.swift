@@ -24,17 +24,20 @@ final class AppSettings {
     var snoozeMinutes: Int {
         didSet { SharedStore.snoozeMinutes = snoozeMinutes }
     }
+    var taskType: TaskType {
+        didSet { SharedStore.taskType = taskType }
+    }
     var onboardingComplete: Bool {
         didSet { SharedStore.onboardingComplete = onboardingComplete }
     }
-    var hasReferencePhoto: Bool {
-        didSet { SharedStore.hasReferencePhoto = hasReferencePhoto }
+    var hasAgreedToTerms: Bool {
+        didSet { SharedStore.hasAgreedToTerms = hasAgreedToTerms }
     }
 
     private init(
         wakeHour: Int, wakeMinute: Int, repeatWeekdayRawValues: [String],
-        fineCents: Int, snoozeCostCents: Int, snoozeMinutes: Int,
-        onboardingComplete: Bool, hasReferencePhoto: Bool
+        fineCents: Int, snoozeCostCents: Int, snoozeMinutes: Int, taskType: TaskType,
+        onboardingComplete: Bool, hasAgreedToTerms: Bool
     ) {
         self.wakeHour = wakeHour
         self.wakeMinute = wakeMinute
@@ -42,8 +45,9 @@ final class AppSettings {
         self.fineCents = fineCents
         self.snoozeCostCents = snoozeCostCents
         self.snoozeMinutes = snoozeMinutes
+        self.taskType = taskType
         self.onboardingComplete = onboardingComplete
-        self.hasReferencePhoto = hasReferencePhoto
+        self.hasAgreedToTerms = hasAgreedToTerms
     }
 
     static func load() -> AppSettings {
@@ -54,18 +58,41 @@ final class AppSettings {
             fineCents: SharedStore.fineCents,
             snoozeCostCents: SharedStore.snoozeCostCents,
             snoozeMinutes: SharedStore.snoozeMinutes,
+            taskType: SharedStore.taskType,
             onboardingComplete: SharedStore.onboardingComplete,
-            hasReferencePhoto: SharedStore.hasReferencePhoto
+            hasAgreedToTerms: SharedStore.hasAgreedToTerms
         )
     }
 
-    var fineDollars: Double {
-        get { Double(fineCents) / 100 }
-        set { fineCents = max(100, Int((newValue * 100).rounded())) }
+    /// Snapshot for iCloud sync (CloudSync.swift). Kept separate from the
+    /// @Observable class itself since Codable + @Observable macro storage
+    /// don't mix cleanly, and CloudSync needs a plain value type to diff/merge.
+    struct Snapshot: Codable {
+        var wakeHour: Int
+        var wakeMinute: Int
+        var repeatWeekdayRawValues: [String]
+        var fineCents: Int
+        var snoozeCostCents: Int
+        var snoozeMinutes: Int
+        var taskType: TaskType
     }
 
-    var snoozeCostDollars: Double {
-        get { Double(snoozeCostCents) / 100 }
-        set { snoozeCostCents = max(0, Int((newValue * 100).rounded())) }
+    var snapshot: Snapshot {
+        Snapshot(
+            wakeHour: wakeHour, wakeMinute: wakeMinute,
+            repeatWeekdayRawValues: repeatWeekdayRawValues,
+            fineCents: fineCents, snoozeCostCents: snoozeCostCents,
+            snoozeMinutes: snoozeMinutes, taskType: taskType
+        )
+    }
+
+    func apply(_ snapshot: Snapshot) {
+        wakeHour = snapshot.wakeHour
+        wakeMinute = snapshot.wakeMinute
+        repeatWeekdayRawValues = snapshot.repeatWeekdayRawValues
+        fineCents = snapshot.fineCents
+        snoozeCostCents = snapshot.snoozeCostCents
+        snoozeMinutes = snapshot.snoozeMinutes
+        taskType = snapshot.taskType
     }
 }

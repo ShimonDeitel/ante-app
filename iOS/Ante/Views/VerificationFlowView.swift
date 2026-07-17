@@ -65,12 +65,12 @@ struct VerificationFlowView: View {
         VStack(spacing: 20) {
             PulsingGlowRing()
                 .frame(width: 120, height: 120)
-                .overlay { Image(systemName: "bed.double.fill").font(.system(size: 40)).foregroundStyle(AnteTheme.gold) }
-            Text("Make your bed, then show me")
+                .overlay { Image(systemName: settings.taskType.systemImageName).font(.system(size: 40)).foregroundStyle(AnteTheme.gold) }
+            Text(settings.taskType.instruction)
                 .font(.system(size: 26, weight: .bold, design: .rounded))
                 .foregroundStyle(AnteTheme.cream)
                 .multilineTextAlignment(.center)
-            Text("Checked on-device. The photo never leaves your phone.")
+            Text("Checked by AI, right now. No setup photo needed.")
                 .font(.footnote)
                 .foregroundStyle(AnteTheme.cream.opacity(0.6))
                 .multilineTextAlignment(.center)
@@ -100,7 +100,7 @@ struct VerificationFlowView: View {
                         .clipShape(Circle())
                 }
             }
-            Text("Checking against your reference photo…")
+            Text("Checking your photo…")
                 .font(.headline)
                 .foregroundStyle(AnteTheme.cream)
         }
@@ -111,7 +111,7 @@ struct VerificationFlowView: View {
             Image(systemName: "checkmark.seal.fill")
                 .font(.system(size: 64))
                 .foregroundStyle(AnteTheme.gold)
-            Text("Bed's made. Ante returned.")
+            Text("Done. Ante returned.")
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .foregroundStyle(AnteTheme.cream)
             Button {
@@ -134,7 +134,7 @@ struct VerificationFlowView: View {
             Image(systemName: "xmark.seal.fill")
                 .font(.system(size: 56))
                 .foregroundStyle(AnteTheme.chipRed)
-            Text("Doesn't match your reference photo")
+            Text("That doesn't look right")
                 .font(.system(size: 22, weight: .bold, design: .rounded))
                 .foregroundStyle(AnteTheme.cream)
                 .multilineTextAlignment(.center)
@@ -174,13 +174,8 @@ struct VerificationFlowView: View {
     private func analyze(_ image: UIImage) {
         phase = .analyzing
         Task {
-            guard let reference = ReferencePhotoStore.load() else {
-                phase = .failed
-                errorMessage = "No reference photo saved. Set one in Settings."
-                return
-            }
             do {
-                let result = try await BedPhotoVerifier.compare(referenceImage: reference, candidateImage: image)
+                let result = try await CloudVisionVerifier.verify(image: image, taskType: settings.taskType)
                 if result.passed {
                     SettlementService.recordVerified(modelContext: modelContext)
                     alarmEngine.markVerifiedAndStop()
@@ -192,7 +187,7 @@ struct VerificationFlowView: View {
                 }
             } catch {
                 phase = .failed
-                errorMessage = "Couldn't analyze that photo. Try again."
+                errorMessage = error.localizedDescription
             }
         }
     }

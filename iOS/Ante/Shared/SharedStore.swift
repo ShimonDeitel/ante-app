@@ -15,7 +15,8 @@ enum SharedStore {
         static let snoozeCostCents = "snoozeCostCents"
         static let snoozeMinutes = "snoozeMinutes"
         static let onboardingComplete = "onboardingComplete"
-        static let hasReferencePhoto = "hasReferencePhoto"
+        static let taskType = "taskType"
+        static let hasAgreedToTerms = "hasAgreedToTerms"
         static let currentAlarmID = "currentAlarmID"
         static let pendingSettlement = "pendingSettlement"
         static let verificationRequested = "verificationRequested"
@@ -62,9 +63,14 @@ enum SharedStore {
         set { defaults.set(newValue, forKey: Key.onboardingComplete) }
     }
 
-    static var hasReferencePhoto: Bool {
-        get { defaults.bool(forKey: Key.hasReferencePhoto) }
-        set { defaults.set(newValue, forKey: Key.hasReferencePhoto) }
+    static var taskType: TaskType {
+        get { (defaults.string(forKey: Key.taskType)).flatMap(TaskType.init(rawValue:)) ?? .makeBed }
+        set { defaults.set(newValue.rawValue, forKey: Key.taskType) }
+    }
+
+    static var hasAgreedToTerms: Bool {
+        get { defaults.bool(forKey: Key.hasAgreedToTerms) }
+        set { defaults.set(newValue, forKey: Key.hasAgreedToTerms) }
     }
 
     static var currentAlarmID: UUID? {

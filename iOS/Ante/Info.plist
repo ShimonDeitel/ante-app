@@ -25,7 +25,7 @@
 	<key>NSAlarmKitUsageDescription</key>
 	<string>Ante needs alarm access to wake you up and hold you to your morning commitment.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Ante uses the camera to verify your bed is made each morning. Photos are compared on-device and never uploaded anywhere.</string>
+	<string>Ante uses the camera to check your morning task photo. The photo is analyzed and discarded, never stored.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

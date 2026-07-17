@@ -64,43 +64,46 @@
   <div class="meta">Effective date: July 2026 · App version 1.0</div>
 
   <div class="callout">
-    <strong>Short version:</strong> Your bed-check photos are compared entirely on your device and never leave your phone. The only thing that ever reaches a server is the payment needed to process a fine or a paid snooze — and Ante never sees or stores your card details itself.
+    <strong>Short version:</strong> Your task photo is analyzed to check whether it satisfies the task you chose, then discarded — it is never stored after the check completes. Sign in with Apple creates your account; your settings and morning history sync privately across your own devices via your own iCloud account, invisible to Ante. The only other thing that ever reaches a server is the payment needed to process a fine or a paid snooze — and Ante never sees or stores your card details itself.
   </div>
 
-  <h2>1. Photos never leave your device</h2>
-  <p>Ante asks you to take a reference photo of your made bed once, and a comparison photo each morning. Both photos are analyzed using Apple's on-device Vision framework, which produces a similarity score locally. Neither photo is uploaded, transmitted, or shared with Ante or any third party. The reference photo is stored only in the app's local storage on your device and is deleted if you delete the app.</p>
+  <h2>1. Sign in with Apple</h2>
+  <p>Creating an Ante account requires Sign in with Apple. Apple shares your unique account identifier, and your name and email only if you choose to share them (you may hide your email using Apple's private relay). Ante uses this only to identify your account and to enable iCloud sync of your own data across your own devices. Ante never receives your Apple ID password.</p>
 
-  <h2>2. What Ante stores on your device</h2>
+  <h2>2. Task photos are analyzed, then discarded</h2>
+  <p>Each morning, Ante asks you to photograph proof of the task you chose (for example, a made bed, or a photo showing you outdoors). That single photo is analyzed to produce a pass/fail verification result. Depending on the task and device, this analysis happens on-device or via a request to a verification service that receives only the photo and the task type being checked — never your name, account identifier, location, or any other personal data. The photo itself is not retained by Ante or by the verification service after the check completes, and is deleted from your device once the result is recorded.</p>
+
+  <h2>3. What syncs via your iCloud account</h2>
   <ul>
-    <li>Your wake time and repeat days</li>
+    <li>Your wake time, repeat days, and chosen task type</li>
     <li>Your fine amount and snooze cost settings</li>
-    <li>The reference bed photo</li>
     <li>A history of past mornings (verified or charged, and the amount) so you can see your own record</li>
   </ul>
-  <p>None of the above is transmitted anywhere unless stated otherwise below.</p>
+  <p>This data syncs between your own devices signed into the same Apple Account using Apple's iCloud service. It stays inside your private iCloud account — Ante's operator cannot read it, and it is never shared with any third party except the payment processor described below, and only the specific charge amount and reason, never your full history.</p>
 
-  <h2>3. Real-money charges</h2>
-  <p>Ante charges real money when you stop the alarm without a verified bed photo, or when you pay to snooze. These charges are the core mechanic of the app — you set both amounts yourself before they can ever be applied, and can change or turn them off in Settings at any time. Charges are processed by a third-party payment processor (Stripe); Ante's backend never stores your full card number. The amount charged, the date, and the reason are stored in your on-device history so you always have a record of what you were charged and why.</p>
+  <h2>4. Real-money charges</h2>
+  <p>Ante charges real money when you end the alarm without a verified task photo, or when you pay to snooze. These charges are the core mechanic of the app — you set both amounts yourself, from a fixed list of preset amounts, before they can ever be applied, and can change them in Settings at any time. Charges are processed by a third-party payment processor; Ante's own systems never store your full card number. The amount charged, the date, and the reason are stored in your synced history so you always have a record of what you were charged and why.</p>
 
-  <h2>4. Permissions used</h2>
+  <h2>5. Permissions used</h2>
   <ul>
-    <li><strong>Camera:</strong> used only to take your reference and daily bed-check photos, analyzed entirely on-device.</li>
+    <li><strong>Camera:</strong> used only to take your daily task-verification photo.</li>
     <li><strong>Alarms (AlarmKit):</strong> used to wake you at your set time with an alert that can break through silent mode, the same as the system Clock app.</li>
+    <li><strong>iCloud:</strong> used to sync your settings and history across your own devices.</li>
   </ul>
 
-  <h2>5. Analytics and advertising</h2>
+  <h2>6. Analytics and advertising</h2>
   <p>Ante contains no third-party analytics SDK, no advertising network, and no user tracking.</p>
 
-  <h2>6. Children</h2>
-  <p>Ante is not directed at children and involves real-money charges. It is not intended for use by anyone under 18.</p>
+  <h2>7. Children</h2>
+  <p>Ante is not directed at children and involves real-money charges. It is not intended for use by anyone under 18, and account creation requires agreeing that you meet this requirement.</p>
 
-  <h2>7. Data deletion</h2>
-  <p>Deleting the app removes your reference photo, settings, and history from your device. Payment records held by the payment processor are retained per their own policy and applicable financial recordkeeping law.</p>
+  <h2>8. Data deletion</h2>
+  <p>Deleting your account from Settings removes your settings and history from iCloud and from your device. Payment records held by the payment processor are retained per their own policy and applicable financial recordkeeping law.</p>
 
-  <h2>8. Changes to this policy</h2>
+  <h2>9. Changes to this policy</h2>
   <p>Any material changes will be noted in the App Store release notes prior to the update going live.</p>
 
-  <h2>9. Contact</h2>
+  <h2>10. Contact</h2>
   <p>Questions? Email: <a href="mailto:s0533495227@gmail.com">s0533495227@gmail.com</a></p>
 </main>
 

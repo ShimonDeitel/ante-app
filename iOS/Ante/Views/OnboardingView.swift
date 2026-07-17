@@ -1,18 +1,20 @@
 import SwiftUI
+import AuthenticationServices
 
 private enum OnboardingStep: Int, CaseIterable {
-    case welcome, referencePhoto, schedule, stakes, agree
+    case welcome, taskType, schedule, stakes, signIn, agree
 }
 
 struct OnboardingView: View {
     @Environment(AlarmEngine.self) private var alarmEngine
     @Environment(AppSettings.self) private var settings
+    @Environment(AppleSignInService.self) private var auth
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var step: OnboardingStep = .welcome
-    @State private var showCamera = false
-    @State private var referenceImage: UIImage?
     @State private var isStarting = false
     @State private var errorMessage: String?
+    @State private var hasCheckedAgree = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -22,9 +24,10 @@ struct OnboardingView: View {
             Group {
                 switch step {
                 case .welcome: welcomeStep
-                case .referencePhoto: referencePhotoStep
+                case .taskType: taskTypeStep
                 case .schedule: scheduleStep
                 case .stakes: stakesStep
+                case .signIn: signInStep
                 case .agree: agreeStep
                 }
             }
@@ -36,17 +39,6 @@ struct OnboardingView: View {
         }
         .animation(.spring(response: 0.45, dampingFraction: 0.85), value: step)
         .dismissKeyboardOnTap()
-        .fullScreenCover(isPresented: $showCamera) {
-            CameraCaptureView(
-                onCapture: { image in
-                    referenceImage = image
-                    ReferencePhotoStore.save(image)
-                    showCamera = false
-                },
-                onCancel: { showCamera = false }
-            )
-            .ignoresSafeArea()
-        }
     }
 
     private var stepDots: some View {
@@ -64,7 +56,7 @@ struct OnboardingView: View {
     private var welcomeStep: some View {
         StepScaffold(
             title: "Ante",
-            subtitle: "You put money on the line to wake up. Make your bed and the ante's returned. Skip it, and it's forfeit.",
+            subtitle: "You put money on the line to wake up. Complete the task and the ante's returned. Skip it, and it's forfeit.",
             primaryTitle: "Deal me in"
         ) {
             advance()
@@ -78,34 +70,42 @@ struct OnboardingView: View {
         }
     }
 
-    private var referencePhotoStep: some View {
+    private var taskTypeStep: some View {
         StepScaffold(
-            title: "Show me a made bed",
-            subtitle: "Take one reference photo now. Every morning, Ante compares your wake-up photo against this one, entirely on your device.",
-            primaryTitle: referenceImage == nil ? "Open camera" : "Use this photo",
-            primaryEnabled: true
+            title: "Pick your task",
+            subtitle: "What you have to prove each morning to keep your ante. Checked by AI, right when you take the photo - no setup photo needed.",
+            primaryTitle: "Next"
         ) {
-            if referenceImage == nil {
-                showCamera = true
-            } else {
-                advance()
-            }
+            advance()
         } content: {
-            if let referenceImage {
-                Image(uiImage: referenceImage)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 220, height: 220)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(AnteTheme.gold, lineWidth: 2))
-                Button("Retake") { showCamera = true }
-                    .foregroundStyle(AnteTheme.gold)
-            } else {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(AnteTheme.felt)
-                    .frame(width: 220, height: 220)
-                    .overlay(Image(systemName: "camera.fill").font(.system(size: 36)).foregroundStyle(AnteTheme.gold.opacity(0.7)))
+            VStack(spacing: 12) {
+                ForEach(TaskType.allCases) { task in
+                    let isOn = task == settings.taskType
+                    Button {
+                        settings.taskType = task
+                    } label: {
+                        HStack(spacing: 14) {
+                            Image(systemName: task.systemImageName)
+                                .font(.system(size: 20))
+                                .frame(width: 28)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(task.title).font(.headline)
+                                Text(task.instruction).font(.caption)
+                            }
+                            Spacer()
+                            if isOn {
+                                Image(systemName: "checkmark.circle.fill")
+                            }
+                        }
+                        .padding(16)
+                        .background(isOn ? AnteTheme.gold : AnteTheme.felt)
+                        .foregroundStyle(isOn ? AnteTheme.feltDeep : AnteTheme.cream)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                    .buttonStyle(.plain)
+                }
             }
+            .padding(.horizontal, 32)
         }
     }
 
@@ -146,29 +146,66 @@ struct OnboardingView: View {
         ) {
             advance()
         } content: {
-            VStack(spacing: 28) {
-                VStack(spacing: 10) {
-                    Text(Money.format(cents: settings.fineCents))
-                        .font(.system(size: 44, weight: .bold, design: .rounded))
-                        .foregroundStyle(AnteTheme.goldBright)
-                    Slider(value: Binding(get: { settings.fineDollars }, set: { settings.fineDollars = $0 }), in: 1...1000, step: 1)
-                        .tint(AnteTheme.gold)
-                    Text("Fine for skipping the bed check")
+            ScrollView {
+                VStack(spacing: 24) {
+                    VStack(spacing: 10) {
+                        Text("Fine for skipping")
+                            .font(.footnote)
+                            .foregroundStyle(AnteTheme.cream.opacity(0.6))
+                        MoneyPresetPicker(presets: MoneyPreset.fineCents, selectedCents: Binding(
+                            get: { settings.fineCents }, set: { settings.fineCents = $0 }
+                        ))
+                    }
+                    VStack(spacing: 10) {
+                        Text("Cost per snooze")
+                            .font(.footnote)
+                            .foregroundStyle(AnteTheme.cream.opacity(0.6))
+                        MoneyPresetPicker(presets: MoneyPreset.snoozeCostCents, selectedCents: Binding(
+                            get: { settings.snoozeCostCents }, set: { settings.snoozeCostCents = $0 }
+                        ))
+                    }
+                }
+                .padding(.horizontal, 32)
+            }
+            .frame(maxHeight: 340)
+        }
+    }
+
+    private var signInStep: some View {
+        StepScaffold(
+            title: "Sign in with Apple",
+            subtitle: "Ante charges real money, so it needs an identity to attribute that to, and to sync your stakes and history across your own devices via iCloud.",
+            primaryTitle: "Continue",
+            primaryEnabled: auth.isSignedIn
+        ) {
+            advance()
+        } content: {
+            VStack(spacing: 16) {
+                SignInWithAppleButton(.signIn) { request in
+                    auth.configureRequest(request)
+                } onCompletion: { result in
+                    auth.handle(result)
+                }
+                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                .frame(height: 52)
+                .clipShape(.capsule)
+
+                if auth.isSignedIn {
+                    Label("Signed in", systemImage: "checkmark.seal.fill")
                         .font(.footnote)
-                        .foregroundStyle(AnteTheme.cream.opacity(0.6))
-                }
-                VStack(spacing: 10) {
-                    Text(Money.format(cents: settings.snoozeCostCents))
-                        .font(.system(size: 28, weight: .semibold, design: .rounded))
                         .foregroundStyle(AnteTheme.gold)
-                    Stepper(
-                        "Cost per snooze",
-                        value: Binding(get: { settings.snoozeCostDollars }, set: { settings.snoozeCostDollars = $0 }),
-                        in: 0...50, step: 1
-                    )
-                    .foregroundStyle(AnteTheme.cream)
                 }
-                .padding(.horizontal, 12)
+                if let authError = auth.lastError {
+                    Text(authError)
+                        .font(.footnote)
+                        .foregroundStyle(AnteTheme.chipRed)
+                        .multilineTextAlignment(.center)
+                }
+                #if DEBUG
+                Button("Simulator: skip sign-in") { auth.devBypass() }
+                    .font(.caption)
+                    .foregroundStyle(AnteTheme.cream.opacity(0.4))
+                #endif
             }
             .padding(.horizontal, 32)
         }
@@ -177,9 +214,9 @@ struct OnboardingView: View {
     private var agreeStep: some View {
         StepScaffold(
             title: "This charges real money",
-            subtitle: "Skipping the bed check charges \(Money.format(cents: settings.fineCents)). Each snooze charges \(Money.format(cents: settings.snoozeCostCents)). You can change both any time in Settings.",
-            primaryTitle: isStarting ? "Starting…" : "Start the ante",
-            primaryEnabled: !isStarting
+            subtitle: "Skipping the task charges \(Money.format(cents: settings.fineCents)). Each snooze charges \(Money.format(cents: settings.snoozeCostCents)). Those charges are final - see the Terms of Use.",
+            primaryTitle: isStarting ? "Starting…" : "I Agree - Start the Ante",
+            primaryEnabled: hasCheckedAgree && !isStarting
         ) {
             start()
         } content: {
@@ -187,10 +224,34 @@ struct OnboardingView: View {
                 Image(systemName: "creditcard.fill")
                     .font(.system(size: 40))
                     .foregroundStyle(AnteTheme.gold)
-                Text("By continuing you agree to Ante's Terms of Use and Privacy Policy.")
-                    .font(.footnote)
-                    .foregroundStyle(AnteTheme.cream.opacity(0.6))
-                    .multilineTextAlignment(.center)
+
+                // Deliberately no Link/nested-interactive content inside this
+                // button - mixing a tap target with embedded hyperlinks is
+                // fragile for hit-testing (and for real fingers). The Terms/
+                // Privacy links live in their own row below, untangled from
+                // the checkbox toggle.
+                Button {
+                    hasCheckedAgree.toggle()
+                } label: {
+                    HStack(alignment: .top, spacing: 12) {
+                        Image(systemName: hasCheckedAgree ? "checkmark.square.fill" : "square")
+                            .font(.system(size: 22))
+                            .foregroundStyle(hasCheckedAgree ? AnteTheme.gold : AnteTheme.cream.opacity(0.6))
+                        Text("I have read and agree to the Terms of Use and Privacy Policy.")
+                            .font(.subheadline)
+                            .foregroundStyle(AnteTheme.cream)
+                            .multilineTextAlignment(.leading)
+                    }
+                }
+                .buttonStyle(.plain)
+
+                HStack(spacing: 16) {
+                    Link("Terms of Use", destination: LegalLinks.terms)
+                    Link("Privacy Policy", destination: LegalLinks.privacy)
+                }
+                .font(.footnote)
+                .foregroundStyle(AnteTheme.gold)
+
                 if let errorMessage {
                     Text(errorMessage)
                         .font(.footnote)
@@ -219,7 +280,9 @@ struct OnboardingView: View {
             }
             do {
                 try await alarmEngine.scheduleDailyAlarm(settings: settings)
+                settings.hasAgreedToTerms = true
                 settings.onboardingComplete = true
+                CloudSync.shared.pushSettings(settings.snapshot)
             } catch {
                 errorMessage = "Couldn't schedule the alarm: \(error.localizedDescription)"
             }

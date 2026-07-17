@@ -9,18 +9,24 @@
 /* Begin PBXBuildFile section */
 		01E144D575586454B8559969 /* AlarmIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888E8D3F3E7E8F33022422E /* AlarmIntents.swift */; };
 		08483D35B4BDC57C53F6A3CB /* AlarmEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EAE21E788F77A23B707724 /* AlarmEngine.swift */; };
+		09F194E28C654BB8B40961D9 /* MoneyPresetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBDED517E9794A1513499DF /* MoneyPresetPicker.swift */; };
 		10925E32C23107002887FD4E /* PayToDismissView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B220AA345EC291E87E854A5D /* PayToDismissView.swift */; };
+		155A826689C0834A9971C89D /* TaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CE0B886D0BF4AD29C0F3E2 /* TaskType.swift */; };
 		1EF4DE91E58EE2854C5B1A0F /* AnteTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BFCF3B97B7DD985C39CE7 /* AnteTheme.swift */; };
+		2D4600010E68F847D3B5090B /* AppleSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2A65AAF0ED80862AB72016 /* AppleSignInService.swift */; };
+		30D98195535754698E6A7AB1 /* OnboardingConsentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782958A660C57C9E3336F6AA /* OnboardingConsentUITests.swift */; };
 		419188D95E69A3955FBD0CA5 /* AnteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231132BC023C9CE28ADE003F /* AnteTests.swift */; };
+		440FDAE966B5590F2DD0DCCA /* SignInRequiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDB0039310309E0257D3CD2 /* SignInRequiredView.swift */; };
 		477AB7A99D1ECA9779960ACD /* MockPaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4914CFED00A958FA38DC3E /* MockPaymentProcessor.swift */; };
 		4E518301A37E08F8B5149A6D /* PaymentProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CDA453BE5C075FE9F845AF /* PaymentProcessing.swift */; };
 		58E5AD53B570D4B4CA703249 /* StripePaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE357324B528D2B0C43BE1 /* StripePaymentProcessor.swift */; };
-		5EE615FC65CF2DFC117BAE8B /* ReferencePhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */; };
+		6E1D0840296D1BE9CBA0BC1E /* MoneyPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1C6B3D70DE6BBD901FF21 /* MoneyPreset.swift */; };
 		74F52753F5AB7F12BE27FD87 /* AnteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91031C03526E51587B9E76BB /* AnteApp.swift */; };
 		7536BF7F9DFEAE1C4F13D1C9 /* NextFire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F8B6932009C3ECE052FCA /* NextFire.swift */; };
 		82FAD43DB653E3E78F6516EA /* SettlementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC036A9FA09D5B86C2F20 /* SettlementService.swift */; };
 		87EF171C24B973C586F2A5FC /* VerificationFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */; };
 		8E14FF3964A320FD49E6A875 /* MorningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E091B628D462AF6F3913DF /* MorningRecord.swift */; };
+		A0585AB13ECB29AA233E1E53 /* CloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCD8775BDCA30C731AC46A /* CloudSync.swift */; };
 		A1E92CCE80613093C1B44246 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9205ACF05EBACE272A93B3 /* RootRouter.swift */; };
 		A7636C03C9B07FBA67297E32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EA073C6253D7E86CEC3717 /* Assets.xcassets */; };
 		AC84F72BC46EE186D7EE6090 /* LegalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44830411C7FAD841940F5246 /* LegalLinks.swift */; };
@@ -29,12 +35,12 @@
 		B894417FD8C5956CA674F084 /* AlarmEnforcementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A74117FDA2524FA9AB2F6 /* AlarmEnforcementUITests.swift */; };
 		BE196D1E998C21955C0ED9C4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05366936C84888289D465711 /* HomeView.swift */; };
 		C6210EC0A2994DE382264A42 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE42AE137659E326A1A0C2 /* Formatting.swift */; };
-		CEDD1E167DEDF1C0BD28EA61 /* BedPhotoVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31969DBCFFE7C75D9C34AAF6 /* BedPhotoVerifier.swift */; };
 		D089031EC68EA269CC89BAC8 /* SnoozeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401F8A9C7F4FB549F7DDF3C /* SnoozeSheet.swift */; };
 		DE51220F87A7B8ED7D026F8A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF77DB47B3507657991DD9D /* OnboardingView.swift */; };
 		DE88EABCB9405B18E99072DF /* DismissKeyboardOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23FA81A4CBBE78131078FA /* DismissKeyboardOnTap.swift */; };
 		DED410CD53C895AB60750D32 /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DB37F94DB332F7B378C6D1 /* CameraCaptureView.swift */; };
 		EC1C4F670298D875999E9124 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A5BA474AF38E0DBB882643 /* HistoryView.swift */; };
+		FB7F3358A9E078D030444945 /* CloudVisionVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0DC45399259EA2AF4C95BB /* CloudVisionVerifier.swift */; };
 		FCA4A2B88D07A3F9AAA88483 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF43663DB3AAF07B6CFFE81 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,22 +65,27 @@
 		01EA073C6253D7E86CEC3717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05366936C84888289D465711 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationFlowView.swift; sourceTree = "<group>"; };
+		1280E5EBF13C47BE52523275 /* Ante.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ante.entitlements; sourceTree = "<group>"; };
 		133BFCF3B97B7DD985C39CE7 /* AnteTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteTheme.swift; sourceTree = "<group>"; };
 		1401F8A9C7F4FB549F7DDF3C /* SnoozeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeSheet.swift; sourceTree = "<group>"; };
 		18AE42AE137659E326A1A0C2 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		231132BC023C9CE28ADE003F /* AnteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteTests.swift; sourceTree = "<group>"; };
 		28EEC036A9FA09D5B86C2F20 /* SettlementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementService.swift; sourceTree = "<group>"; };
-		31969DBCFFE7C75D9C34AAF6 /* BedPhotoVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedPhotoVerifier.swift; sourceTree = "<group>"; };
 		35DB37F94DB332F7B378C6D1 /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
 		36CDA453BE5C075FE9F845AF /* PaymentProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessing.swift; sourceTree = "<group>"; };
 		44830411C7FAD841940F5246 /* LegalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalLinks.swift; sourceTree = "<group>"; };
-		4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencePhotoStore.swift; sourceTree = "<group>"; };
 		4A4914CFED00A958FA38DC3E /* MockPaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentProcessor.swift; sourceTree = "<group>"; };
+		4BB1C6B3D70DE6BBD901FF21 /* MoneyPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyPreset.swift; sourceTree = "<group>"; };
+		4BCCD8775BDCA30C731AC46A /* CloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSync.swift; sourceTree = "<group>"; };
 		5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		5D9F8B6932009C3ECE052FCA /* NextFire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFire.swift; sourceTree = "<group>"; };
+		5FDB0039310309E0257D3CD2 /* SignInRequiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequiredView.swift; sourceTree = "<group>"; };
 		6A7A74117FDA2524FA9AB2F6 /* AlarmEnforcementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEnforcementUITests.swift; sourceTree = "<group>"; };
+		6C2A65AAF0ED80862AB72016 /* AppleSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInService.swift; sourceTree = "<group>"; };
 		771246E6DF425007BA0445C1 /* AnteTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AnteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		782958A660C57C9E3336F6AA /* OnboardingConsentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingConsentUITests.swift; sourceTree = "<group>"; };
 		7D68A93ADAE214C25A1F1678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		81CE0B886D0BF4AD29C0F3E2 /* TaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskType.swift; sourceTree = "<group>"; };
 		86EAE21E788F77A23B707724 /* AlarmEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEngine.swift; sourceTree = "<group>"; };
 		8FBE357324B528D2B0C43BE1 /* StripePaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentProcessor.swift; sourceTree = "<group>"; };
 		91031C03526E51587B9E76BB /* AnteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnteApp.swift; sourceTree = "<group>"; };
@@ -86,7 +97,9 @@
 		B3E091B628D462AF6F3913DF /* MorningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningRecord.swift; sourceTree = "<group>"; };
 		B888E8D3F3E7E8F33022422E /* AlarmIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmIntents.swift; sourceTree = "<group>"; };
 		BCF77DB47B3507657991DD9D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CFBDED517E9794A1513499DF /* MoneyPresetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyPresetPicker.swift; sourceTree = "<group>"; };
 		D1A5BA474AF38E0DBB882643 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		DE0DC45399259EA2AF4C95BB /* CloudVisionVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudVisionVerifier.swift; sourceTree = "<group>"; };
 		E6C95E01449980045E6A50D7 /* Ante.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ante.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE21B9EF0893CC9E9D186756 /* AnteUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AnteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,10 +123,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5F49CD41B857B9F9AF295ABB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				6C2A65AAF0ED80862AB72016 /* AppleSignInService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		846BD1CDB8752C723B0108A7 /* AnteUITests */ = {
 			isa = PBXGroup;
 			children = (
 				6A7A74117FDA2524FA9AB2F6 /* AlarmEnforcementUITests.swift */,
+				782958A660C57C9E3336F6AA /* OnboardingConsentUITests.swift */,
 			);
 			path = AnteUITests;
 			sourceTree = "<group>";
@@ -122,7 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				5BE037F2D8CDE2D7AA8AEFA4 /* AppSettings.swift */,
+				4BB1C6B3D70DE6BBD901FF21 /* MoneyPreset.swift */,
 				B3E091B628D462AF6F3913DF /* MorningRecord.swift */,
+				81CE0B886D0BF4AD29C0F3E2 /* TaskType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,8 +154,7 @@
 		A384ADF2491F5C212B02C01C /* Verification */ = {
 			isa = PBXGroup;
 			children = (
-				31969DBCFFE7C75D9C34AAF6 /* BedPhotoVerifier.swift */,
-				4863C801EDDA3D4B879E83DC /* ReferencePhotoStore.swift */,
+				DE0DC45399259EA2AF4C95BB /* CloudVisionVerifier.swift */,
 			);
 			path = Verification;
 			sourceTree = "<group>";
@@ -153,10 +176,12 @@
 				35DB37F94DB332F7B378C6D1 /* CameraCaptureView.swift */,
 				D1A5BA474AF38E0DBB882643 /* HistoryView.swift */,
 				05366936C84888289D465711 /* HomeView.swift */,
+				CFBDED517E9794A1513499DF /* MoneyPresetPicker.swift */,
 				BCF77DB47B3507657991DD9D /* OnboardingView.swift */,
 				B220AA345EC291E87E854A5D /* PayToDismissView.swift */,
 				AC9205ACF05EBACE272A93B3 /* RootRouter.swift */,
 				AEF43663DB3AAF07B6CFFE81 /* SettingsView.swift */,
+				5FDB0039310309E0257D3CD2 /* SignInRequiredView.swift */,
 				1401F8A9C7F4FB549F7DDF3C /* SnoozeSheet.swift */,
 				090782D92ADCA2A6E8A030A3 /* VerificationFlowView.swift */,
 			);
@@ -175,10 +200,12 @@
 		DF12D9A0C28BE9DC4B37D186 /* Ante */ = {
 			isa = PBXGroup;
 			children = (
+				1280E5EBF13C47BE52523275 /* Ante.entitlements */,
 				91031C03526E51587B9E76BB /* AnteApp.swift */,
 				01EA073C6253D7E86CEC3717 /* Assets.xcassets */,
 				7D68A93ADAE214C25A1F1678 /* Info.plist */,
 				C4A1DEA9A00815280596C1A5 /* Alarm */,
+				5F49CD41B857B9F9AF295ABB /* Auth */,
 				84E1E25D05E8A3598E230553 /* Models */,
 				B1847B13DDE7DDA0F087C232 /* Payment */,
 				F750EB1B1BF445C4F31ACE77 /* Shared */,
@@ -214,6 +241,7 @@
 		F750EB1B1BF445C4F31ACE77 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4BCCD8775BDCA30C731AC46A /* CloudSync.swift */,
 				957FF6DFFB755EE25EC8F817 /* SharedStore.swift */,
 			);
 			path = Shared;
@@ -338,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B894417FD8C5956CA674F084 /* AlarmEnforcementUITests.swift in Sources */,
+				30D98195535754698E6A7AB1 /* OnboardingConsentUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,26 +387,31 @@
 				74F52753F5AB7F12BE27FD87 /* AnteApp.swift in Sources */,
 				1EF4DE91E58EE2854C5B1A0F /* AnteTheme.swift in Sources */,
 				B2E2C8DDD289E3B583235A5E /* AppSettings.swift in Sources */,
-				CEDD1E167DEDF1C0BD28EA61 /* BedPhotoVerifier.swift in Sources */,
+				2D4600010E68F847D3B5090B /* AppleSignInService.swift in Sources */,
 				DED410CD53C895AB60750D32 /* CameraCaptureView.swift in Sources */,
+				A0585AB13ECB29AA233E1E53 /* CloudSync.swift in Sources */,
+				FB7F3358A9E078D030444945 /* CloudVisionVerifier.swift in Sources */,
 				DE88EABCB9405B18E99072DF /* DismissKeyboardOnTap.swift in Sources */,
 				C6210EC0A2994DE382264A42 /* Formatting.swift in Sources */,
 				EC1C4F670298D875999E9124 /* HistoryView.swift in Sources */,
 				BE196D1E998C21955C0ED9C4 /* HomeView.swift in Sources */,
 				AC84F72BC46EE186D7EE6090 /* LegalLinks.swift in Sources */,
 				477AB7A99D1ECA9779960ACD /* MockPaymentProcessor.swift in Sources */,
+				6E1D0840296D1BE9CBA0BC1E /* MoneyPreset.swift in Sources */,
+				09F194E28C654BB8B40961D9 /* MoneyPresetPicker.swift in Sources */,
 				8E14FF3964A320FD49E6A875 /* MorningRecord.swift in Sources */,
 				7536BF7F9DFEAE1C4F13D1C9 /* NextFire.swift in Sources */,
 				DE51220F87A7B8ED7D026F8A /* OnboardingView.swift in Sources */,
 				10925E32C23107002887FD4E /* PayToDismissView.swift in Sources */,
 				4E518301A37E08F8B5149A6D /* PaymentProcessing.swift in Sources */,
-				5EE615FC65CF2DFC117BAE8B /* ReferencePhotoStore.swift in Sources */,
 				A1E92CCE80613093C1B44246 /* RootRouter.swift in Sources */,
 				FCA4A2B88D07A3F9AAA88483 /* SettingsView.swift in Sources */,
 				82FAD43DB653E3E78F6516EA /* SettlementService.swift in Sources */,
 				AE3F943D5885CF748F1AB5AF /* SharedStore.swift in Sources */,
+				440FDAE966B5590F2DD0DCCA /* SignInRequiredView.swift in Sources */,
 				D089031EC68EA269CC89BAC8 /* SnoozeSheet.swift in Sources */,
 				58E5AD53B570D4B4CA703249 /* StripePaymentProcessor.swift in Sources */,
+				155A826689C0834A9971C89D /* TaskType.swift in Sources */,
 				87EF171C24B973C586F2A5FC /* VerificationFlowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Ante/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -629,6 +664,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ante/Ante.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Ante/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

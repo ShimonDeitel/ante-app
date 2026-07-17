@@ -28,38 +28,51 @@ struct MorningRecordTests {
     }
 }
 
-struct BedPhotoVerifierResultTests {
-    @Test func distanceAtOrBelowThresholdPasses() {
-        let result = BedPhotoVerifier.Result(distance: BedPhotoVerifier.similarityThreshold)
-        #expect(result.passed)
+struct MoneyPresetTests {
+    @Test func finePresetsMatchOwnerSpec() {
+        let dollars = MoneyPreset.fineCents.map { $0 / 100 }
+        #expect(dollars == [1, 3, 5, 10, 20, 50, 100, 1000, 10000])
     }
 
-    @Test func distanceAboveThresholdFails() {
-        let result = BedPhotoVerifier.Result(distance: BedPhotoVerifier.similarityThreshold + 0.01)
-        #expect(!result.passed)
+    @Test func snoozePresetsIncludeFree() {
+        #expect(MoneyPreset.snoozeCostCents.first == 0)
+    }
+}
+
+struct TaskTypeTests {
+    @Test func everyTaskHasANonEmptyVerificationQuestion() {
+        for task in TaskType.allCases {
+            #expect(!task.verificationQuestion.isEmpty)
+            #expect(task.verificationQuestion.uppercased().contains("YES"))
+        }
     }
 }
 
 @MainActor
 @Suite(.serialized)
 struct AppSettingsTests {
-    @Test func fineDollarsRoundTripsThroughCents() {
+    @Test func fineCentsMustBeAPreset() {
         let settings = AppSettings.load()
-        settings.fineDollars = 12
-        #expect(settings.fineCents == 1200)
-        #expect(settings.fineDollars == 12)
-    }
-
-    @Test func fineDollarsHasAOneDollarFloor() {
-        let settings = AppSettings.load()
-        settings.fineDollars = 0
-        #expect(settings.fineCents == 100)
+        settings.fineCents = 500
+        #expect(MoneyPreset.fineCents.contains(settings.fineCents))
     }
 
     @Test func snoozeCostCanBeZero() {
         let settings = AppSettings.load()
-        settings.snoozeCostDollars = 0
+        settings.snoozeCostCents = 0
         #expect(settings.snoozeCostCents == 0)
+    }
+
+    @Test func snapshotRoundTrips() {
+        let settings = AppSettings.load()
+        settings.fineCents = 1000
+        settings.taskType = .touchGrass
+        let snapshot = settings.snapshot
+        settings.fineCents = 300
+        settings.taskType = .makeBed
+        settings.apply(snapshot)
+        #expect(settings.fineCents == 1000)
+        #expect(settings.taskType == .touchGrass)
     }
 }
 

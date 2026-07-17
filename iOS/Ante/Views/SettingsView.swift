@@ -9,10 +9,9 @@ private let weekdayLabels: [Locale.Weekday: String] = [
 struct SettingsView: View {
     @Environment(AlarmEngine.self) private var alarmEngine
     @Environment(AppSettings.self) private var settings
+    @Environment(AppleSignInService.self) private var auth
     @Environment(\.dismiss) private var dismiss
 
-    @State private var showCamera = false
-    @State private var referenceImage: UIImage?
     @State private var isSaving = false
     @State private var errorMessage: String?
 
@@ -35,31 +34,60 @@ struct SettingsView: View {
                     weekdayPicker
                 }
 
-                Section("Stakes") {
-                    VStack(alignment: .leading) {
-                        Text("Fine for skipping: \(Money.format(cents: settings.fineCents))")
-                        Slider(value: Binding(get: { settings.fineDollars }, set: { settings.fineDollars = $0 }), in: 1...1000, step: 1)
+                Section("Task") {
+                    ForEach(TaskType.allCases) { task in
+                        Button {
+                            settings.taskType = task
+                        } label: {
+                            HStack {
+                                Image(systemName: task.systemImageName)
+                                Text(task.title)
+                                Spacer()
+                                if task == settings.taskType {
+                                    Image(systemName: "checkmark").foregroundStyle(AnteTheme.gold)
+                                }
+                            }
+                        }
+                        .foregroundStyle(.primary)
                     }
-                    Stepper(
-                        "Snooze cost: \(Money.format(cents: settings.snoozeCostCents))",
-                        value: Binding(get: { settings.snoozeCostDollars }, set: { settings.snoozeCostDollars = $0 }),
-                        in: 0...50, step: 1
-                    )
+                }
+
+                Section("Stakes") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Fine for skipping: \(Money.format(cents: settings.fineCents))")
+                            .font(.subheadline)
+                        MoneyPresetPicker(presets: MoneyPreset.fineCents, selectedCents: Binding(
+                            get: { settings.fineCents }, set: { settings.fineCents = $0 }
+                        ))
+                    }
+                    .padding(.vertical, 4)
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Snooze cost: \(Money.format(cents: settings.snoozeCostCents))")
+                            .font(.subheadline)
+                        MoneyPresetPicker(presets: MoneyPreset.snoozeCostCents, selectedCents: Binding(
+                            get: { settings.snoozeCostCents }, set: { settings.snoozeCostCents = $0 }
+                        ))
+                    }
+                    .padding(.vertical, 4)
+
                     Stepper("Snooze length: \(settings.snoozeMinutes) min", value: Binding(
                         get: { settings.snoozeMinutes }, set: { settings.snoozeMinutes = $0 }
                     ), in: 1...30)
                 }
 
-                Section("Reference photo") {
-                    if let referenceImage {
-                        Image(uiImage: referenceImage)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(height: 160)
-                            .frame(maxWidth: .infinity)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                Section("Account") {
+                    if let name = auth.displayName {
+                        LabeledContent("Signed in as", value: name)
+                    } else {
+                        LabeledContent("Signed in", value: "Apple Account")
                     }
-                    Button("Retake reference photo") { showCamera = true }
+                    Label(
+                        CloudSync.shared.isAvailable ? "Syncing via iCloud" : "iCloud unavailable on this device",
+                        systemImage: CloudSync.shared.isAvailable ? "icloud.fill" : "icloud.slash"
+                    )
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
                 }
 
                 Section("Legal") {
@@ -86,18 +114,6 @@ struct SettingsView: View {
             }
         }
         .dismissKeyboardOnTap()
-        .onAppear { referenceImage = ReferencePhotoStore.load() }
-        .fullScreenCover(isPresented: $showCamera) {
-            CameraCaptureView(
-                onCapture: { image in
-                    referenceImage = image
-                    ReferencePhotoStore.save(image)
-                    showCamera = false
-                },
-                onCancel: { showCamera = false }
-            )
-            .ignoresSafeArea()
-        }
     }
 
     private var weekdayPicker: some View {
@@ -136,6 +152,7 @@ struct SettingsView: View {
         Task {
             do {
                 try await alarmEngine.scheduleDailyAlarm(settings: settings)
+                CloudSync.shared.pushSettings(settings.snapshot)
                 dismiss()
             } catch {
                 errorMessage = "Couldn't reschedule: \(error.localizedDescription)"
